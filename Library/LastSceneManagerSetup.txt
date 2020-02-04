@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Stec.unity
+- path: Assets/Scenes/Captain.unity
   isLoaded: 1
   isActive: 1
