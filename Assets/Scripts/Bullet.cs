@@ -8,10 +8,14 @@ public class Bullet : MonoBehaviour
     public float speed;
     private float spawntime;
     public int damage;
+    private AudioManager AM;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        AM = FindObjectOfType<AudioManager>();
         spawntime = Time.time;
+        AM.Play("PlayerBullet");
     }
 
     // Update is called once per frame

@@ -12,9 +12,11 @@ public class SimpleEnemyMovement : MonoBehaviour
     public float MinHorizontalSpeed;
     public float MinVerticalSpeed;
     private GameObject player;
+    private Health health;
     // Start is called before the first frame update
     void Start()
     {
+        health = this.gameObject.GetComponent<Health>();
         Direction = (Random.value > .5f);
         Horizontalspeed = Random.Range(MinHorizontalSpeed, MaxHorizontalSpeed);
         VerticalSpeed = Random.Range(MinVerticalSpeed, MaxVerticalSpeed);
@@ -50,13 +52,14 @@ public class SimpleEnemyMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Bottom"))
         {
             player.GetComponent<Health>().TakeDamage(1);
-            Destroy(this.gameObject);
+            FindObjectOfType<AudioManager>().Play("PlanetHit");
+            health.TakeDamage(health.health);
         }
 
         if (other.gameObject.CompareTag("Player"))
         {
             player.GetComponent<Health>().TakeDamage(1);
-            Destroy(this.gameObject);
+            health.TakeDamage(health.health);
         }
     }
 }

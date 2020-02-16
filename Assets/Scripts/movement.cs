@@ -18,19 +18,19 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             rb.transform.position += transform.up * Time.deltaTime * ForwardVelocity;
         }
-        if (Input.GetKey(KeyCode.A))
-        {
-            rb.rotation += RotSpeed * Time.fixedDeltaTime;
-        }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             rb.transform.position -= transform.up * Time.deltaTime * ForwardVelocity;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            rb.rotation += RotSpeed * Time.fixedDeltaTime;
+        }
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             rb.rotation -= RotSpeed * Time.fixedDeltaTime;
         }
