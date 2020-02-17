@@ -379,6 +379,15 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: EnemyBullet
+    clip: {fileID: 8300000, guid: 76cbc076ee0bc4781af3d44117648476, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!4 &452210184
 Transform:
   m_ObjectHideFlags: 0
