@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class PlayerGun : MonoBehaviour
 {
-    public float FireCooldown = 1f;
     private float lastfire;
     public GameObject prefab;
-    public float SpawnHeight;
+    private float SpawnHeight;
+    StatManager SM;
+
     // Start is called before the first frame update
+    private void Start()
+    {
+        SM = this.gameObject.GetComponent<StatManager>();
+        SpawnHeight = SM.forward_projectile_spawn_height;
+    }
+
     public void Fire()
     {
         float time = Time.time;
-        if (time > lastfire + FireCooldown)
+        if (time > lastfire + SM.firing_rate)
         {
             lastfire = time;
             Vector3 position = transform.position + transform.up * SpawnHeight;

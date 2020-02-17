@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 258332805}
   m_Layer: 0
   m_Name: BackGround
-  m_TagString: Background
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 452210183}
   m_Layer: 0
   m_Name: AudioManager
-  m_TagString: Audio
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixerGroup: {fileID: 0}
   sounds:
-  - name: EnemyDeath
+  - name: SimpleEnemyDeath
     clip: {fileID: 8300000, guid: 3f692f0823b3f45afb000d656f137d55, type: 3}
     volume: 0.25
     volumeVariance: 0
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 630220449}
   - component: {fileID: 630220448}
   - component: {fileID: 630220452}
-  - component: {fileID: 630220451}
+  - component: {fileID: 630220453}
   - component: {fileID: 630220447}
   - component: {fileID: 630220446}
   m_Layer: 0
@@ -609,9 +609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e014f1e8d8370b42bbaf532ba6963c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotSpeed: 270
-  ForwardVelocity: 5
-  BackwardVelocity: 3.5
 --- !u!212 &630220449
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -649,7 +646,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e8f47d575549b004b8bd0cd5f18c3135, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -676,20 +673,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &630220451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 529788337751970948, guid: 0b630af976e9e3a4da8001b542f7f930,
-    type: 3}
-  m_PrefabInstance: {fileID: 529788337121767975}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630220445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64120e5f1d686f940a4eca32fe1cb28e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
 --- !u!114 &630220452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,9 +686,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136788fa64ec6f141979951841ebaa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireCooldown: 1
   prefab: {fileID: 3765380661404073376, guid: f3692ed1cd736034597b51d42e33610d, type: 3}
-  SpawnHeight: 1
+--- !u!114 &630220453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630220445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a36214ac5471615418b989cf98557499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Max_Health: 3
+  Crash_Damage: 1
+  Bullet_Damage: 1
+  ForwardVelocity: 5
+  BackwardVelocity: 3.5
+  RotSpeed: 270
+  firing_rate: 1
+  forward_projectile_spawn_height: 0.8
+  Bullet_lifetime: 5
+  Bullet_Velocity: 7
 --- !u!1 &657338972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1023,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e47287e21aa97af4cbc5eeb9f114242c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1211,8 +1214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57bf2cf8b19bb741afe7cb7e8995de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 4332493320160765768, guid: 4a1a43d14ea1ffa478f66fe7e80929a0, type: 3}
-  timebetweenspawns: 4
+  enemies:
+  - {fileID: 4332493320160765768, guid: 4a1a43d14ea1ffa478f66fe7e80929a0, type: 3}
+  - {fileID: 4332493320160765768, guid: f4943f2dcde2d924497fc4a843b8600b, type: 3}
+  timebetweenspawns: 5
   NumSpawnRateIncrease: 5
   SpawnTimeDecrease: 0.5
 --- !u!4 &2126038274
@@ -1355,6 +1360,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 529788337751970950, guid: 0b630af976e9e3a4da8001b542f7f930,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 529788337751970951, guid: 0b630af976e9e3a4da8001b542f7f930,
         type: 3}

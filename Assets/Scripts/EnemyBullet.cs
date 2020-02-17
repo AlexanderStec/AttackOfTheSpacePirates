@@ -2,20 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
-    public float lifetime = 5f;
+    [HideInInspector]
+    public float lifetime;
+    [HideInInspector]
     public float speed;
-    private float spawntime;
+    [HideInInspector]
     public int damage;
+
+    private float spawntime;
     private AudioManager AM;
+    private GameObject player;
+    private StatManager PlayerSM;
 
     // Start is called before the first frame update
     void Awake()
     {
         AM = FindObjectOfType<AudioManager>();
         spawntime = Time.time;
-        AM.Play("PlayerBullet");
+        AM.Play("EnemyBullet");
+        player = GameObject.FindGameObjectWithTag("Player");
+        PlayerSM = player.GetComponent<StatManager>();
     }
 
     // Update is called once per frame
@@ -35,7 +43,10 @@ public class Bullet : MonoBehaviour
     }
     internal void OnCollisionEnter2D(Collision2D other)
     {
-        other.gameObject.GetComponent<Health>().TakeDamage(damage);
-        Destroy(gameObject);
+        if (other.gameObject.tag.Equals("Player"))
+        {
+            PlayerSM.take_damage(damage);
+            Destroy(gameObject);
+        }
     }
 }

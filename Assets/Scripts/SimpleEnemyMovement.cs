@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class SimpleEnemyMovement : MonoBehaviour
 {
-    private float Horizontalspeed;
-    private float VerticalSpeed;
-    private bool Direction;
     public float MaxHorizontalSpeed;
     public float MaxVerticalSpeed;
     public float MinHorizontalSpeed;
     public float MinVerticalSpeed;
+
+    private float Horizontalspeed;
+    private float VerticalSpeed;
+    private bool Direction;
     private GameObject player;
-    private Health health;
+    private StatManager PlayerSM;
+    private StatManager EnemySM;
     // Start is called before the first frame update
     void Start()
     {
-        health = this.gameObject.GetComponent<Health>();
         Direction = (Random.value > .5f);
         Horizontalspeed = Random.Range(MinHorizontalSpeed, MaxHorizontalSpeed);
         VerticalSpeed = Random.Range(MinVerticalSpeed, MaxVerticalSpeed);
         player = GameObject.FindGameObjectWithTag("Player");
+        PlayerSM = player.GetComponent<StatManager>();
+        EnemySM = GetComponent<StatManager>();
     }
 
     // Update is called once per frame
@@ -45,22 +48,22 @@ public class SimpleEnemyMovement : MonoBehaviour
 
     internal void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("SimpleEnemy"))
         {
             Direction = !Direction;
         }
 
         if (other.gameObject.CompareTag("Bottom"))
         {
-            player.GetComponent<Health>().TakeDamage(1);
+            PlayerSM.take_damage(EnemySM.Crash_Damage);
             FindObjectOfType<AudioManager>().Play("PlanetHit");
-            health.TakeDamage(health.health);
+            EnemySM.take_damage(EnemySM.Max_Health);
         }
 
         if (other.gameObject.CompareTag("Player"))
         {
-            player.GetComponent<Health>().TakeDamage(1);
-            health.TakeDamage(health.health);
+            PlayerSM.take_damage(EnemySM.Crash_Damage);
+            EnemySM.take_damage(PlayerSM.Crash_Damage);
         }
     }
 }

@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject enemy;
+    public GameObject[] enemies;
+
     public float timebetweenspawns;
-    private float spawntime;
-    private int numSpawned;
     public int NumSpawnRateIncrease;
     public float SpawnTimeDecrease;
+
+    private GameObject enemy;
+    private float spawntime;
+    private int numSpawned;
 
     void Start()
     {
@@ -22,6 +25,8 @@ public class Spawner : MonoBehaviour
         int spawnpoint = Random.Range(0, 10);
         if (spawntime + timebetweenspawns < Time.time)
         {
+            int enemy_val = Random.Range(0, 2);
+            enemy = enemies[enemy_val];
             spawntime = Time.time;
             GameObject.Instantiate(enemy, this.transform.GetChild(spawnpoint).position, Quaternion.identity);
             numSpawned++;
