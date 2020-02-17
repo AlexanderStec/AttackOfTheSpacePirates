@@ -498,8 +498,9 @@ GameObject:
   - component: {fileID: 630220448}
   - component: {fileID: 630220452}
   - component: {fileID: 630220453}
-  - component: {fileID: 630220447}
   - component: {fileID: 630220446}
+  - component: {fileID: 630220451}
+  - component: {fileID: 630220447}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -587,18 +588,17 @@ PolygonCollider2D:
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 529788337751971000, guid: 0b630af976e9e3a4da8001b542f7f930,
-    type: 3}
-  m_PrefabInstance: {fileID: 529788337121767975}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630220445}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.7955855
+  m_UseAutoMass: 0
+  m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -682,6 +682,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &630220451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630220445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2372fbdfde3e36d43ad56b4d5fbc3ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShieldCooldown: 5
+  ShieldUpTime: 1
+  shield: {fileID: 1007100754887441676, guid: d244ba263c381804eaab7d7b7e41140d, type: 3}
 --- !u!114 &630220452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,7 +983,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 6}
+  m_Offset: {x: 0, y: 6.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1226,7 +1241,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 4332493320160765768, guid: 4a1a43d14ea1ffa478f66fe7e80929a0, type: 3}
   - {fileID: 4332493320160765768, guid: f4943f2dcde2d924497fc4a843b8600b, type: 3}
-  timebetweenspawns: 5
+  timebetweenspawns: 4
   NumSpawnRateIncrease: 5
   SpawnTimeDecrease: 0.5
 --- !u!4 &2126038274
@@ -1399,6 +1414,16 @@ PrefabInstance:
         type: 3}
       propertyPath: BackwardVelocity
       value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 529788337751971000, guid: 0b630af976e9e3a4da8001b542f7f930,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 529788337751971000, guid: 0b630af976e9e3a4da8001b542f7f930,
+        type: 3}
+      propertyPath: m_Mass
+      value: 7.714633
       objectReference: {fileID: 0}
     - target: {fileID: 529788337751971001, guid: 0b630af976e9e3a4da8001b542f7f930,
         type: 3}

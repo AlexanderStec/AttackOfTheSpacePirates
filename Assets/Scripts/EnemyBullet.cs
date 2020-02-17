@@ -48,5 +48,9 @@ public class EnemyBullet : MonoBehaviour
             PlayerSM.take_damage(damage);
             Destroy(gameObject);
         }
+        if (other.gameObject.tag.Equals("Bottom"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

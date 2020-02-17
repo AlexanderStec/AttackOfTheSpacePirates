@@ -8,6 +8,8 @@ TagManager:
   - Bottom
   - SimpleEnemy
   - Background
+  - Shield
+  - EP
   layers:
   - Default
   - TransparentFX

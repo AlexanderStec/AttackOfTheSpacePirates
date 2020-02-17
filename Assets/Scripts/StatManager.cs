@@ -26,6 +26,10 @@ public class StatManager : MonoBehaviour
         if (Max_Health <= 0)
             Debug.LogWarning("Max Health started at 0 or neg");
         health = Max_Health;
+
+        if (gameObject.tag.Equals("Player"))
+            Debug.Log(health);
+
     }
 
     //Increases health by given amount
@@ -42,6 +46,9 @@ public class StatManager : MonoBehaviour
         if (amount < 0)
             Debug.LogWarning("Cannot cause negative damage!");
         health = Mathf.Max(health - amount, 0);
+
+        if (gameObject.tag.Equals("Player"))
+            Debug.Log(health);
     }
 
     //Returns if the ship should be killed
@@ -61,8 +68,6 @@ public class StatManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (gameObject.tag.Equals("Player"))
-            Debug.Log(health);
         if (is_dead())
         {
             kill();
