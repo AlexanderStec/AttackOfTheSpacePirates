@@ -26,18 +26,19 @@ public class SimpleEnemyMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 move = Vector3.zero;
+        Vector3 end = transform.position;
         if (Direction)
         {
-            move = move + ((Vector3.right * Horizontalspeed) * Time.fixedDeltaTime);
+            end = end + (Vector3.right * Horizontalspeed);
         }
         else
         {
-            move = move + ((Vector3.left * Horizontalspeed) * Time.fixedDeltaTime);
+            end = end + (Vector3.left * Horizontalspeed);
         }
 
-        move = move + ((Vector3.down * VerticalSpeed) * Time.fixedDeltaTime);
-        transform.position = transform.position + move;
+        end = end + (Vector3.down * VerticalSpeed);
+        Vector3 start = transform.position;
+        transform.position = Vector3.Lerp(start, end, Time.fixedDeltaTime);
 
 
     }

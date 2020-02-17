@@ -611,7 +611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotSpeed: 270
   ForwardVelocity: 5
-  SideVelocity: 3
+  BackwardVelocity: 3.5
 --- !u!212 &630220449
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -705,7 +705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FireCooldown: 1
   prefab: {fileID: 3765380661404073376, guid: f3692ed1cd736034597b51d42e33610d, type: 3}
-  SpawnHeight: 0.8
+  SpawnHeight: 1
 --- !u!1 &657338972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,6 +1281,11 @@ PrefabInstance:
       propertyPath: FireCooldown
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 529788337751970947, guid: 0b630af976e9e3a4da8001b542f7f930,
+        type: 3}
+      propertyPath: SpawnHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 529788337751970948, guid: 0b630af976e9e3a4da8001b542f7f930,
         type: 3}
       propertyPath: health
@@ -1365,6 +1370,16 @@ PrefabInstance:
         type: 3}
       propertyPath: SideVelocity
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 529788337751970951, guid: 0b630af976e9e3a4da8001b542f7f930,
+        type: 3}
+      propertyPath: ForwardVelocity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 529788337751970951, guid: 0b630af976e9e3a4da8001b542f7f930,
+        type: 3}
+      propertyPath: BackwardVelocity
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 529788337751971001, guid: 0b630af976e9e3a4da8001b542f7f930,
         type: 3}

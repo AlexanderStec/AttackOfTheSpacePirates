@@ -6,7 +6,7 @@ public class movement : MonoBehaviour
 {
     public float RotSpeed;
     public float ForwardVelocity;
-    public float SideVelocity;
+    public float BackwardVelocity;
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -20,27 +20,27 @@ public class movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            rb.transform.position += transform.up * Time.deltaTime * ForwardVelocity;
+            Vector2 start = rb.transform.position;
+            Vector2 end = rb.transform.position + transform.up * ForwardVelocity;
+            rb.transform.position = Vector2.Lerp(start, end, Time.fixedDeltaTime);
         }
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            rb.transform.position -= transform.up * Time.deltaTime * ForwardVelocity;
+            Vector2 start = rb.transform.position;
+            Vector2 end = rb.transform.position - transform.up * BackwardVelocity;
+            rb.transform.position = Vector2.Lerp(start, end, Time.fixedDeltaTime);
         }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            rb.rotation += RotSpeed * Time.fixedDeltaTime;
+            Vector3 start = rb.transform.eulerAngles;
+            Vector3 end = rb.transform.eulerAngles + new Vector3(0, 0, RotSpeed);
+            rb.transform.eulerAngles = Vector3.Lerp(start, end, Time.fixedDeltaTime);
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            rb.rotation -= RotSpeed * Time.fixedDeltaTime;
-        }
-        if (Input.GetKey(KeyCode.E))
-        {
-            rb.transform.position += transform.right * Time.deltaTime * SideVelocity;
-        }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            rb.transform.position -= transform.right * Time.deltaTime * SideVelocity;
+            Vector3 start = rb.transform.eulerAngles;
+            Vector3 end = rb.transform.eulerAngles - new Vector3(0, 0, RotSpeed);
+            rb.transform.eulerAngles = Vector3.Lerp(start, end, Time.fixedDeltaTime);
         }
     }
 }

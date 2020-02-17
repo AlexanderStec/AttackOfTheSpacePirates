@@ -27,9 +27,10 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            Vector2 direction = transform.up * speed;
-            Vector3 move = direction * Time.fixedDeltaTime;
-            transform.position = transform.position + move;
+            Vector3 direction = transform.up * speed;
+            Vector3 start = transform.position;
+            Vector3 end = transform.position + direction;
+            transform.position = Vector3.Lerp(start, end, Time.fixedDeltaTime);
         }
     }
     internal void OnCollisionEnter2D(Collision2D other)
