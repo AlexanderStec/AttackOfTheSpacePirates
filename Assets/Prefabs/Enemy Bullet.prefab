@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7362541740779676838}
   - component: {fileID: 3932377516725069178}
   - component: {fileID: 4685965220456199576}
-  - component: {fileID: 50725285167193256}
   m_Layer: 12
   m_Name: Enemy Bullet
   m_TagString: EP
@@ -123,24 +122,3 @@ MonoBehaviour:
   lifetime: 5
   speed: 3
   damage: 1
---- !u!50 &50725285167193256
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5781222923741117555}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 5
