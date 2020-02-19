@@ -22,8 +22,11 @@ public class EnemyBullet : MonoBehaviour
         AM = FindObjectOfType<AudioManager>();
         spawntime = Time.time;
         AM.Play("EnemyBullet");
-        player = GameObject.FindGameObjectWithTag("Player");
-        PlayerSM = player.GetComponent<StatManager>();
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            PlayerSM = player.GetComponent<StatManager>();
+        }
     }
 
     // Update is called once per frame

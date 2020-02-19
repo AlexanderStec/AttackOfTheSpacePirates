@@ -55,8 +55,10 @@ public class SimpleEnemyMovement : MonoBehaviour
 
         if (other.gameObject.CompareTag("Bottom"))
         {
-            PlayerSM.take_damage(EnemySM.Crash_Damage);
-            FindObjectOfType<AudioManager>().Play("PlanetHit");
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+            {
+                PlayerSM.take_damage(EnemySM.Crash_Damage);
+            }
             EnemySM.take_damage(EnemySM.Max_Health);
         }
 

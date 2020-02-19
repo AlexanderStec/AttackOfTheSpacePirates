@@ -9,6 +9,7 @@ public class Spawner : MonoBehaviour
     public float timebetweenspawns;
     public int NumSpawnRateIncrease;
     public float SpawnTimeDecrease;
+    public float minSpawnTime;
 
     private GameObject enemy;
     private float spawntime;
@@ -33,8 +34,8 @@ public class Spawner : MonoBehaviour
             if (numSpawned % NumSpawnRateIncrease == 0 && timebetweenspawns > .5f)
             {
                 timebetweenspawns = timebetweenspawns - SpawnTimeDecrease;
-                if (timebetweenspawns <= 0)
-                    timebetweenspawns = .25f;
+                if (timebetweenspawns <= minSpawnTime)
+                    timebetweenspawns = minSpawnTime;
             }
         }
     }

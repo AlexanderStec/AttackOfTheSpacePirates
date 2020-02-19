@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class StatManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class StatManager : MonoBehaviour
     public int Max_Health = 0;
     public int Crash_Damage;
     public int Bullet_Damage;
+    public TextMeshProUGUI healthDisplay;
+    public TextMeshProUGUI DeathDisplay;
 
     public float ForwardVelocity;
     public float BackwardVelocity;
@@ -19,17 +22,16 @@ public class StatManager : MonoBehaviour
 
     private int health;
     private AudioManager AM;
+    private PlayerHit PH;
 
     private void Start()
     {
+        if (tag.Equals("Player"))
+            PH = this.GetComponent<PlayerHit>();
         AM = FindObjectOfType<AudioManager>();
         if (Max_Health <= 0)
             Debug.LogWarning("Max Health started at 0 or neg");
         health = Max_Health;
-
-        if (gameObject.tag.Equals("Player"))
-            Debug.Log(health);
-
     }
 
     //Increases health by given amount
@@ -43,12 +45,14 @@ public class StatManager : MonoBehaviour
     //Decreases the health by a given amount
     public void take_damage(int amount)
     {
+        if (tag.Equals("Player"))
+        {
+            AM.Play("PlayerHit");
+            StartCoroutine(PH.ColorChange(PH.changeTime));
+        }
         if (amount < 0)
             Debug.LogWarning("Cannot cause negative damage!");
         health = Mathf.Max(health - amount, 0);
-
-        if (gameObject.tag.Equals("Player"))
-            Debug.Log(health);
     }
 
     //Returns if the ship should be killed
@@ -62,12 +66,20 @@ public class StatManager : MonoBehaviour
         if (tag.Equals("SimpleEnemy"))
             AM.Play("SimpleEnemyDeath");
         if (tag.Equals("Player"))
+        {
             AM.Play("PlayerDeath");
+            DeathDisplay.gameObject.SetActive(true);
+            GameObject.FindGameObjectWithTag("Spawner").SetActive(false);
+        }
         Destroy(this.gameObject);
     }
 
     private void FixedUpdate()
     {
+        if (this.gameObject.tag.Equals("Player"))
+        {
+            healthDisplay.SetText(":" + health);
+        }
         if (is_dead())
         {
             kill();
