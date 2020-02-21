@@ -13,7 +13,8 @@ public class EnemyHit : MonoBehaviour
     {
         Sr = this.GetComponent<SpriteRenderer>();
     }
-    internal void OnCollisionEnter2D(Collision2D other)
+
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("SimpleEnemy"))
         {

@@ -40,7 +40,8 @@ public class PlayerBullet : MonoBehaviour
             transform.position = Vector3.Lerp(start, end, Time.fixedDeltaTime);
         }
     }
-    internal void OnCollisionEnter2D(Collision2D other)
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         other.gameObject.GetComponent<StatManager>().take_damage(damage);
         Destroy(gameObject);

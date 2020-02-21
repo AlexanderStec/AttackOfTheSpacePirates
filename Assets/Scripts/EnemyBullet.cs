@@ -44,7 +44,7 @@ public class EnemyBullet : MonoBehaviour
             transform.position = Vector3.Lerp(start, end, Time.fixedDeltaTime);
         }
     }
-    internal void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag.Equals("Player"))
         {

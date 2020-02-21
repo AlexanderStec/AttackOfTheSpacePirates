@@ -38,9 +38,13 @@ public class PlayerGun : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Reload.gameObject.transform.localScale.x <= 1)
+        if (Reload.gameObject.transform.localScale.x < 1)
         {
             Reload.gameObject.transform.localScale += new Vector3((Time.fixedDeltaTime/SM.firing_rate), 0, 0);
+        }
+        if (Reload.gameObject.transform.localScale.x >= 1)
+        {
+            Reload.gameObject.transform.localScale = new Vector3(1, 1, 1);
         }
         if (Input.GetKey(KeyCode.Space))
         {
