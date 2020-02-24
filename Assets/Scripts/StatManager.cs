@@ -50,6 +50,12 @@ public class StatManager : MonoBehaviour
             AM.Play("PlayerHit");
             StartCoroutine(PH.ColorChange(PH.changeTime));
         }
+        if (tag.Equals("Broad"))
+        {
+            EnemyHit EH = this.GetComponent<EnemyHit>();
+            StartCoroutine(EH.ColorChange(EH.changeTime));
+            AM.Play("BroadHit");
+        }
         if (amount < 0)
             Debug.LogWarning("Cannot cause negative damage!");
         health = Mathf.Max(health - amount, 0);
@@ -63,7 +69,7 @@ public class StatManager : MonoBehaviour
 
     public void kill()
     {
-        if (tag.Equals("SimpleEnemy"))
+        if (tag.Equals("SimpleEnemy") || tag.Equals("Broad"))
             AM.Play("SimpleEnemyDeath");
         if (tag.Equals("Player"))
         {
@@ -78,7 +84,7 @@ public class StatManager : MonoBehaviour
     {
         if (this.gameObject.tag.Equals("Player"))
         {
-            healthDisplay.SetText(":" + health);
+            healthDisplay.SetText(" " + health);
         }
         if (is_dead())
         {

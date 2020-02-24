@@ -33,6 +33,10 @@ public class shield : MonoBehaviour
         {
             other.gameObject.GetComponent<StatManager>().take_damage(SM.Crash_Damage);
         }
+        if (other.gameObject.tag.Equals("Broad"))
+        {
+            other.gameObject.GetComponent<StatManager>().take_damage(SM.Crash_Damage);
+        }
         if (other.gameObject.tag.Equals("EP"))
         {
             Destroy(other.gameObject);

@@ -8,31 +8,25 @@ public class EnemyHit : MonoBehaviour
     public float changeTime;
     public float numFlashes;
     public Color color;
+    private Color startColor;
 
-    void Start()
+    private void Start()
     {
         Sr = this.GetComponent<SpriteRenderer>();
+        startColor = Sr.material.color;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    public IEnumerator ColorChange(float changeTime)
     {
-        if (other.gameObject.CompareTag("SimpleEnemy"))
+        for (int i = 0; i < numFlashes * 2; i++)
         {
-            StartCoroutine(ColorChange(changeTime));
-        }
-    }
-
-    private IEnumerator ColorChange(float changeTime)
-    {
-        for(int i = 0; i < numFlashes * 2; i++)
-        {
-            if (Sr.material.color == Color.white)
+            if (Sr.material.color == startColor)
             {
                 this.GetComponent<SpriteRenderer>().material.SetColor("_Color", color);
             }
             else
             {
-                this.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.white);
+                this.GetComponent<SpriteRenderer>().material.SetColor("_Color", startColor);
             }
             yield return new WaitForSeconds(changeTime);
         }

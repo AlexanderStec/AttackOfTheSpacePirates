@@ -118,5 +118,4 @@ public class BroadsideEnemy : MonoBehaviour
             ob.GetComponent<EnemyBullet>().damage = SM.Bullet_Damage;
         }
     }
-
 }

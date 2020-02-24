@@ -876,6 +876,15 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: BroadHit
+    clip: {fileID: 8300000, guid: 4b65b8adf1a5d436785169345c0264fd, type: 3}
+    volume: 0.75
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!4 &452210184
 Transform:
   m_ObjectHideFlags: 0
@@ -1369,7 +1378,7 @@ MonoBehaviour:
   ForwardVelocity: 5
   BackwardVelocity: 3.5
   RotSpeed: 270
-  firing_rate: 0.9
+  firing_rate: 1
   forward_projectile_spawn_height: 0.8
   Bullet_lifetime: 5
   Bullet_Velocity: 7
@@ -2495,16 +2504,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 2126038272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b57bf2cf8b19bb741afe7cb7e8995de3, type: 3}
+  m_Script: {fileID: 11500000, guid: 68ab4a9241b255540b29d7bba1835971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 4332493320160765768, guid: 4a1a43d14ea1ffa478f66fe7e80929a0, type: 3}
-  - {fileID: 4332493320160765768, guid: f4943f2dcde2d924497fc4a843b8600b, type: 3}
-  timebetweenspawns: 4
-  NumSpawnRateIncrease: 4
-  SpawnTimeDecrease: 0.5
-  minSpawnTime: 1
+  waves:
+  - name: simple
+    rate: 2
+    enemies:
+    - enemy: {fileID: 4332493320160765768, guid: 4a1a43d14ea1ffa478f66fe7e80929a0,
+        type: 3}
+      count: 2
+  - name: simple shooting
+    rate: 2
+    enemies:
+    - enemy: {fileID: 4332493320160765768, guid: f4943f2dcde2d924497fc4a843b8600b,
+        type: 3}
+      count: 2
+  - name: Combined
+    rate: 2
+    enemies:
+    - enemy: {fileID: 4332493320160765768, guid: 4a1a43d14ea1ffa478f66fe7e80929a0,
+        type: 3}
+      count: 2
+    - enemy: {fileID: 4332493320160765768, guid: f4943f2dcde2d924497fc4a843b8600b,
+        type: 3}
+      count: 1
+  - name: Combined harder
+    rate: 2
+    enemies:
+    - enemy: {fileID: 4332493320160765768, guid: 4a1a43d14ea1ffa478f66fe7e80929a0,
+        type: 3}
+      count: 2
+    - enemy: {fileID: 4332493320160765768, guid: f4943f2dcde2d924497fc4a843b8600b,
+        type: 3}
+      count: 2
+  - name: mini boss
+    rate: 1
+    enemies:
+    - enemy: {fileID: 5207109584872661381, guid: fd456d537fa1fa44da75d2ce33a4c023,
+        type: 3}
+      count: 1
+  timeBetweenWaves: 5
+  waitForAllEnemiesDead: 0
+  FirstWaveStartTime: 3
+  forceSpawnNextWave: 1
 --- !u!4 &2126038274
 Transform:
   m_ObjectHideFlags: 0

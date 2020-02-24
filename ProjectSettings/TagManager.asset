@@ -11,6 +11,8 @@ TagManager:
   - Shield
   - EP
   - Spawner
+  - MoreThanOneHp
+  - Broad
   layers:
   - Default
   - TransparentFX
@@ -28,7 +30,7 @@ TagManager:
   - shield
   - wall
   - PlayerProj
-  - 
+  - BossEnemy
   - 
   - 
   - 
