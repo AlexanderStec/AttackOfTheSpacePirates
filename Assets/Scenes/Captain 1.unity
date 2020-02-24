@@ -2544,10 +2544,10 @@ MonoBehaviour:
     - enemy: {fileID: 5207109584872661381, guid: fd456d537fa1fa44da75d2ce33a4c023,
         type: 3}
       count: 1
-  timeBetweenWaves: 5
-  waitForAllEnemiesDead: 0
-  FirstWaveStartTime: 3
-  forceSpawnNextWave: 1
+  timeBetweenWaves: 3
+  waitForAllEnemiesDead: 1
+  FirstWaveStartTime: 2
+  forceSpawnNextWave: 3
 --- !u!4 &2126038274
 Transform:
   m_ObjectHideFlags: 0

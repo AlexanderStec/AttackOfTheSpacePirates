@@ -40,6 +40,7 @@ public class Spawn : MonoBehaviour
     {
         numSpawnpoints = GameObject.FindGameObjectWithTag("Spawner").transform.childCount;
         waveCountDown = FirstWaveStartTime;
+        forceSpawnCountDown = forceSpawnNextWave;
     }
     private void FixedUpdate()
     {
@@ -68,21 +69,33 @@ public class Spawn : MonoBehaviour
     }
     public bool EnemyIsAlive()
     {
-        searchCountdown -= Time.deltaTime;
-        if (searchCountdown <= 0f)
+        if (waitForAllEnemiesDead)
         {
-            searchCountdown = 1f;
-            if (GameObject.FindGameObjectWithTag("SimpleEnemy") == null && GameObject.FindGameObjectWithTag("Broad") == null)
+            searchCountdown -= Time.deltaTime;
+            if (searchCountdown <= 0f)
             {
-                return false;
+                searchCountdown = 1f;
+                if (GameObject.FindGameObjectWithTag("SimpleEnemy") == null && GameObject.FindGameObjectWithTag("Broad") == null)
+                {
+                    return false;
+                }
             }
+        }
+        else
+        {
+            forceSpawnCountDown -= Time.fixedDeltaTime;
+            if (forceSpawnCountDown <= 0f)
+                return false;
         }
         return true;
     }
     public void WaveCompleted()
     {
         state = SpawnState.COUNTING;
-        waveCountDown = timeBetweenWaves;
+        if (forceSpawnCountDown <= 0f)
+            waveCountDown = 0f;
+        else
+            waveCountDown = timeBetweenWaves;
         forceSpawnCountDown = forceSpawnNextWave;
         if (nextWave + 1 > waves.Length - 1)
         {
