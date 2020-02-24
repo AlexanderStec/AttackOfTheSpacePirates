@@ -12,11 +12,13 @@ public class AbilityManager : MonoBehaviour
     public Image ShieldCD;
 
     private bool ShieldOnCD;
+    private CurrencyManager CM;
     
 
     private void Awake()
     {
         ShieldOnCD = false;
+        CM = this.GetComponent<CurrencyManager>();
     }
     private void FixedUpdate()
     {
@@ -36,5 +38,25 @@ public class AbilityManager : MonoBehaviour
             ShieldOnCD = true;
             ShieldCD.fillAmount = 1;
         }
+    }
+    public void inc_cd()
+    {
+        if (CM.balance >= 1)
+        {
+            ShieldCooldown -= 1f;
+            CM.balance--;
+        }
+        else
+            Debug.Log("Not enough money");
+    }
+    public void inc_duration()
+    {
+        if (CM.balance >= 1)
+        {
+            ShieldUpTime++;
+            CM.balance--;
+        }
+        else
+            Debug.Log("Not enough money");
     }
 }

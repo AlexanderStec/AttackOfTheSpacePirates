@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Spawn : MonoBehaviour
 {
@@ -24,22 +26,27 @@ public class Spawn : MonoBehaviour
     private int numSpawnpoints;
     private int nextWave = 0;
     public float timeBetweenWaves;
+    public int levelReward;
     
     //implement force spawning!
     public bool waitForAllEnemiesDead;
     public float FirstWaveStartTime;
     public float forceSpawnNextWave;
+    public TextMeshProUGUI complete;
+    public Image shop;
 
     private float forceSpawnCountDown;
     private float waveCountDown;
     private SpawnState state = SpawnState.COUNTING;
     private float searchCountdown = 1f;
+    private GameObject player;
 
     private void Start()
     {
         numSpawnpoints = GameObject.FindGameObjectWithTag("Spawner").transform.childCount;
         waveCountDown = FirstWaveStartTime;
         forceSpawnCountDown = forceSpawnNextWave;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     private void FixedUpdate()
     {
@@ -100,7 +107,9 @@ public class Spawn : MonoBehaviour
         {
             nextWave = 0;
             Debug.Log("All waves complete!");
-            gameObject.SetActive(false);
+            player.GetComponent<CurrencyManager>().addMoney(levelReward);
+            complete.gameObject.SetActive(true);
+            StartCoroutine(OpenShop());
             //this is where you write code for when you defeat all waves (delete above line)
         }
         else
@@ -124,6 +133,13 @@ public class Spawn : MonoBehaviour
         state = SpawnState.WAITING;
 
         yield break;
+    }
+
+    IEnumerator OpenShop()
+    {
+        yield return new WaitForSeconds(1f);
+        shop.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     void SpawnEnemy(GameObject enemy)

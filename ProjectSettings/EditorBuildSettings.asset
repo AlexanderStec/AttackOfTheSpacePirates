@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Captain 1.unity
     guid: 602994954dfd89943b0d8c6c9c36559e
+  - enabled: 1
+    path: Assets/Scenes/Sorceress.unity
+    guid: 4f3668a2a5ac8404ca144f53d84dac07
   m_configObjects: {}

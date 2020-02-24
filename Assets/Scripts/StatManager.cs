@@ -24,11 +24,15 @@ public class StatManager : MonoBehaviour
     public int health;
     private AudioManager AM;
     private PlayerHit PH;
+    private CurrencyManager CM;
 
     private void Start()
     {
         if (tag.Equals("Player"))
+        {
             PH = this.GetComponent<PlayerHit>();
+            CM = this.GetComponent<CurrencyManager>();
+        }
         AM = FindObjectOfType<AudioManager>();
         if (Max_Health <= 0)
             Debug.LogWarning("Max Health started at 0 or neg");
@@ -91,6 +95,49 @@ public class StatManager : MonoBehaviour
         {
             kill();
         }
+    }
+
+    public void inc_speed()
+    {
+        if (CM.balance >= 1)
+        {
+            ForwardVelocity++;
+            BackwardVelocity++;
+            RotSpeed += 90;
+            CM.balance--;
+        }
+        else
+            Debug.Log("Not enough money");
+    }
+    public void inc_damage()
+    {
+        if (CM.balance >= 1)
+        {
+            Bullet_Damage += 1;
+            CM.balance--;
+        }
+        else
+            Debug.Log("Not enough money");
+    }
+    public void inc_firing_cd()
+    {
+        if (CM.balance >= 1)
+        {
+            firing_rate -= .1f;
+            CM.balance--;
+        }
+        else
+            Debug.Log("Not enough money");
+    }
+    public void inc_health()
+    {
+        if (CM.balance >= 1)
+        {
+            Max_Health++;
+            CM.balance--;
+        }
+        else
+            Debug.Log("Not enough money");
     }
 
 }
