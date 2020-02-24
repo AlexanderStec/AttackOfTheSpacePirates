@@ -20,7 +20,8 @@ public class StatManager : MonoBehaviour
     public float Bullet_lifetime;
     public float Bullet_Velocity;
 
-    private int health;
+    [HideInInspector]
+    public int health;
     private AudioManager AM;
     private PlayerHit PH;
 

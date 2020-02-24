@@ -19,7 +19,6 @@ public class Spawn : MonoBehaviour
         public string name;
         public float rate;
         public Enemies[] enemies;
-
     }
     public Wave[] waves;
     private int numSpawnpoints;
@@ -101,7 +100,8 @@ public class Spawn : MonoBehaviour
         {
             nextWave = 0;
             Debug.Log("All waves complete!");
-            //this is where you add wave complete code
+            gameObject.SetActive(false);
+            //this is where you write code for when you defeat all waves (delete above line)
         }
         else
         {
@@ -129,7 +129,7 @@ public class Spawn : MonoBehaviour
     void SpawnEnemy(GameObject enemy)
     {
         int spawnpoint = Random.Range(0, numSpawnpoints);
-        GameObject.Instantiate(enemy, this.transform.GetChild(spawnpoint).position, Quaternion.identity);
+        GameObject obj = GameObject.Instantiate(enemy, this.transform.GetChild(spawnpoint).position, Quaternion.identity);
     }
 
 }

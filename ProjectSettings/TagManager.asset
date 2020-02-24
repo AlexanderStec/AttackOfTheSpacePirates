@@ -13,6 +13,7 @@ TagManager:
   - Spawner
   - MoreThanOneHp
   - Broad
+  - Bosshealth
   layers:
   - Default
   - TransparentFX
