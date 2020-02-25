@@ -6,9 +6,9 @@ using TMPro;
 public class StatManager : MonoBehaviour
 {
 
-    public int Max_Health = 0;
-    public int Crash_Damage;
-    public int Bullet_Damage;
+    public float Max_Health = 0f;
+    public float Crash_Damage;
+    public float Bullet_Damage;
     public TextMeshProUGUI healthDisplay;
     public TextMeshProUGUI DeathDisplay;
 
@@ -21,7 +21,7 @@ public class StatManager : MonoBehaviour
     public float Bullet_Velocity;
 
     [HideInInspector]
-    public int health;
+    public float health;
     private AudioManager AM;
     private PlayerHit PH;
     private CurrencyManager CM;
@@ -40,7 +40,7 @@ public class StatManager : MonoBehaviour
     }
 
     //Increases health by given amount
-    public void heal(int amount)
+    public void heal(float amount)
     {
         if (amount < 0)
             Debug.LogWarning("Cannot heal by a negative amount!");
@@ -48,7 +48,7 @@ public class StatManager : MonoBehaviour
     }
 
     //Decreases the health by a given amount
-    public void take_damage(int amount)
+    public void take_damage(float amount)
     {
         if (tag.Equals("Player"))
         {

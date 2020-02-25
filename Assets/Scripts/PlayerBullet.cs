@@ -7,7 +7,7 @@ public class PlayerBullet : MonoBehaviour
     private float lifetime;
     private float speed;
     private float spawntime;
-    private int damage;
+    private float damage;
     private AudioManager AM;
     private GameObject player;
     private StatManager PlayerSM;

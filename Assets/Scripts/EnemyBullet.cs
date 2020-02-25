@@ -9,7 +9,7 @@ public class EnemyBullet : MonoBehaviour
     [HideInInspector]
     public float speed;
     [HideInInspector]
-    public int damage;
+    public float damage;
 
     private float spawntime;
     private AudioManager AM;

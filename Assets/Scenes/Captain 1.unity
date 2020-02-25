@@ -2355,7 +2355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Max_Health: 5
   Crash_Damage: 1
-  Bullet_Damage: 1
+  Bullet_Damage: 0.5
   healthDisplay: {fileID: 325583804}
   DeathDisplay: {fileID: 1648844204}
   ForwardVelocity: 5
