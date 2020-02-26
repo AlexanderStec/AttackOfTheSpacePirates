@@ -14,14 +14,14 @@ public class Controls : MonoBehaviour
     void Start()
     {
         SM = this.gameObject.GetComponent<StatManager>();
-        RotSpeed = SM.RotSpeed;
-        ForwardVelocity = SM.ForwardVelocity;
-        BackwardVelocity = SM.BackwardVelocity;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        RotSpeed = SM.RotSpeed;
+        ForwardVelocity = SM.ForwardVelocity;
+        BackwardVelocity = SM.BackwardVelocity;
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             Vector2 start = transform.position;

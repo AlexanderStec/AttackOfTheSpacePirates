@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AbilityManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class AbilityManager : MonoBehaviour
 
     public GameObject shield;
     public Image ShieldCD;
+    public TextMeshProUGUI cantAfford;
 
     private bool ShieldOnCD;
     private CurrencyManager CM;
@@ -47,7 +49,11 @@ public class AbilityManager : MonoBehaviour
             CM.balance--;
         }
         else
-            Debug.Log("Not enough money");
+        {
+            Color newColor = cantAfford.color;
+            newColor.a = 1;
+            cantAfford.color = newColor;
+        }
     }
     public void inc_duration()
     {
@@ -57,6 +63,10 @@ public class AbilityManager : MonoBehaviour
             CM.balance--;
         }
         else
-            Debug.Log("Not enough money");
+        {
+            Color newColor = cantAfford.color;
+            newColor.a = 1;
+            cantAfford.color = newColor;
+        }
     }
 }

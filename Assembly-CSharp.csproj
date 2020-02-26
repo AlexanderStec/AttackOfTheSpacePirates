@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Sound.cs" />
     <Compile Include="Assets\Scripts\Spawn.cs" />
     <Compile Include="Assets\Scripts\StatManager.cs" />
+    <Compile Include="Assets\Scripts\TextFade.cs" />
     <None Include="Assets\Sounds\FUTURE_BEEPS_LITE\Read_Me.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

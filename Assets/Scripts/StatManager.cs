@@ -11,6 +11,7 @@ public class StatManager : MonoBehaviour
     public float Bullet_Damage;
     public TextMeshProUGUI healthDisplay;
     public TextMeshProUGUI DeathDisplay;
+    public TextMeshProUGUI cantAfford;
 
     public float ForwardVelocity;
     public float BackwardVelocity;
@@ -55,7 +56,7 @@ public class StatManager : MonoBehaviour
             AM.Play("PlayerHit");
             StartCoroutine(PH.ColorChange(PH.changeTime));
         }
-        if (tag.Equals("Broad"))
+        if (tag.Equals("Broad") || tag.Equals("SimpleEnemy"))
         {
             EnemyHit EH = this.GetComponent<EnemyHit>();
             StartCoroutine(EH.ColorChange(EH.changeTime));
@@ -103,11 +104,14 @@ public class StatManager : MonoBehaviour
         {
             ForwardVelocity++;
             BackwardVelocity++;
-            RotSpeed += 90;
             CM.balance--;
         }
         else
-            Debug.Log("Not enough money");
+        {
+            Color newColor = cantAfford.color;
+            newColor.a = 1;
+            cantAfford.color = newColor;
+        }
     }
     public void inc_damage()
     {
@@ -117,7 +121,11 @@ public class StatManager : MonoBehaviour
             CM.balance--;
         }
         else
-            Debug.Log("Not enough money");
+        {
+            Color newColor = cantAfford.color;
+            newColor.a = 1;
+            cantAfford.color = newColor;
+        }
     }
     public void inc_firing_cd()
     {
@@ -127,17 +135,26 @@ public class StatManager : MonoBehaviour
             CM.balance--;
         }
         else
-            Debug.Log("Not enough money");
+        {
+            Color newColor = cantAfford.color;
+            newColor.a = 1;
+            cantAfford.color = newColor;
+        }
     }
     public void inc_health()
     {
         if (CM.balance >= 1)
         {
             Max_Health++;
+            heal(1);
             CM.balance--;
         }
         else
-            Debug.Log("Not enough money");
+        {
+            Color newColor = cantAfford.color;
+            newColor.a = 1;
+            cantAfford.color = newColor;
+        }
     }
 
 }
