@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\EnemyBullet.cs" />
     <Compile Include="Assets\Scripts\EnemyGun.cs" />
     <Compile Include="Assets\Scripts\EnemyHit.cs" />
+    <Compile Include="Assets\Scripts\imagefade.cs" />
     <Compile Include="Assets\Scripts\load_next_scene.cs" />
     <Compile Include="Assets\Scripts\PlanetHit.cs" />
     <Compile Include="Assets\Scripts\PlayerBullet.cs" />
@@ -78,7 +79,9 @@
     <Compile Include="Assets\Scripts\SimpleEnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Sound.cs" />
     <Compile Include="Assets\Scripts\Spawn.cs" />
+    <Compile Include="Assets\Scripts\statKeeper.cs" />
     <Compile Include="Assets\Scripts\StatManager.cs" />
+    <Compile Include="Assets\Scripts\SwapCollider.cs" />
     <Compile Include="Assets\Scripts\TextFade.cs" />
     <None Include="Assets\Sounds\FUTURE_BEEPS_LITE\Read_Me.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
