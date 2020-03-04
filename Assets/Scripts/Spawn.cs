@@ -150,7 +150,7 @@ public class Spawn : MonoBehaviour
     IEnumerator Bosshptrack(GameObject enemy)
     {
         StatManager sm = enemy.GetComponent<StatManager>();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.1f);
         while (sm.health >= 0f)
         {
             bosshealthbar.rectTransform.localScale = new Vector3((sm.health / sm.Max_Health), 1f, 1f);
@@ -161,7 +161,7 @@ public class Spawn : MonoBehaviour
 
     IEnumerator OpenShop()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         shop.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }

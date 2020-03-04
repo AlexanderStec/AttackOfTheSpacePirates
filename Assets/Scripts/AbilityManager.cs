@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class AbilityManager : MonoBehaviour
 {
@@ -31,15 +32,26 @@ public class AbilityManager : MonoBehaviour
     private CurrencyManager CM;
     
 
-    private void Awake()
+    private void Start()
     {
+
         ShieldOnCD = false;
         LeftDash = false;
         RightDash = false;
         CM = this.GetComponent<CurrencyManager>();
+        if (!SceneManager.GetActiveScene().name.Equals("Level 1") && tag.Equals("Player")) //if not on first level and player is in scene this runs
+        {
+            AbilityManager sk = Data.CurrentAbilities;
+            ShieldCooldown = sk.ShieldCooldown;
+            ShieldUpTime = sk.ShieldUpTime;
+            DashDuration = sk.DashDuration;
+            DashCD = sk.DashCD;
+            DashDistance = sk.DashDistance;
+        }
     }
     private void FixedUpdate()
     {
+        Data.CurrentAbilities = this.GetComponent<AbilityManager>();
         ShieldUpdate();
         LeftUpdate();
         RightUpdate();

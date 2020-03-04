@@ -2,12 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class CurrencyManager : MonoBehaviour
 {
     public int balance;
     public TextMeshProUGUI moneyDisplay;
+
+    private void Start()
+    {
+
+        if (!SceneManager.GetActiveScene().name.Equals("Level 1") && tag.Equals("Player")) //if not on first level and player is in scene this runs
+        {
+            CurrencyManager sk = Data.CurrentCurrency;
+            balance = sk.balance;
+        }
+    }
 
     public CurrencyManager(int bal = 0)
     {
@@ -41,6 +52,7 @@ public class CurrencyManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        Data.CurrentCurrency = this.GetComponent<CurrencyManager>();
         moneyDisplay.SetText(" " + balance);
     }
 

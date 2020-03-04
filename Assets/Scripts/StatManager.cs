@@ -38,20 +38,20 @@ public class StatManager : MonoBehaviour
         AM = FindObjectOfType<AudioManager>();
         if (Max_Health <= 0)
             Debug.LogWarning("Max Health started at 0 or neg");
-        if (!SceneManager.GetActiveScene().name.Equals("Level 1")) //if not on first level and player is in scene this runs
+        if (!SceneManager.GetActiveScene().name.Equals("Level 1") && tag.Equals("Player")) //if not on first level and player is in scene this runs
         {
-            statKeeper sk = GameObject.FindGameObjectWithTag("Stats").GetComponent<statKeeper>();
-            Max_Health = sk.currentStats.Max_Health;
-            Crash_Damage = sk.currentStats.Crash_Damage;
-            Bullet_Damage = sk.currentStats.Bullet_Damage;
-            ForwardVelocity = sk.currentStats.ForwardVelocity;
-            BackwardVelocity = sk.currentStats.BackwardVelocity;
-            RotSpeed = sk.currentStats.RotSpeed;
-            firing_rate = sk.currentStats.firing_rate;
-            forward_projectile_spawn_height = sk.currentStats.forward_projectile_spawn_height;
-            Bullet_lifetime = sk.currentStats.Bullet_lifetime;
-            Bullet_Velocity = sk.currentStats.Bullet_Velocity;
-            health = sk.currentStats.health;
+            StatManager sk = Data.CurrentStats;
+            Max_Health = sk.Max_Health;
+            Crash_Damage = sk.Crash_Damage;
+            Bullet_Damage = sk.Bullet_Damage;
+            ForwardVelocity = sk.ForwardVelocity;
+            BackwardVelocity = sk.BackwardVelocity;
+            RotSpeed = sk.RotSpeed;
+            firing_rate = sk.firing_rate;
+            forward_projectile_spawn_height = sk.forward_projectile_spawn_height;
+            Bullet_lifetime = sk.Bullet_lifetime;
+            Bullet_Velocity = sk.Bullet_Velocity;
+            health = sk.health;
         }
     }
 
@@ -114,6 +114,7 @@ public class StatManager : MonoBehaviour
         {
             kill();
         }
+        Data.CurrentStats = this.GetComponent<StatManager>();
     }
 
     public void inc_speed()

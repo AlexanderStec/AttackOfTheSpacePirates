@@ -60,11 +60,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FollowPlayer.cs" />
+    <Compile Include="Assets\KamikaziBoss.cs" />
     <Compile Include="Assets\Scripts\AbilityManager.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\BroadsideEnemy.cs" />
     <Compile Include="Assets\Scripts\Controls.cs" />
     <Compile Include="Assets\Scripts\CurrencyManager.cs" />
+    <Compile Include="Assets\Scripts\Data.cs" />
     <Compile Include="Assets\Scripts\EnemyBullet.cs" />
     <Compile Include="Assets\Scripts\EnemyGun.cs" />
     <Compile Include="Assets\Scripts\EnemyHit.cs" />
@@ -79,7 +82,6 @@
     <Compile Include="Assets\Scripts\SimpleEnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Sound.cs" />
     <Compile Include="Assets\Scripts\Spawn.cs" />
-    <Compile Include="Assets\Scripts\statKeeper.cs" />
     <Compile Include="Assets\Scripts\StatManager.cs" />
     <Compile Include="Assets\Scripts\SwapCollider.cs" />
     <Compile Include="Assets\Scripts\TextFade.cs" />

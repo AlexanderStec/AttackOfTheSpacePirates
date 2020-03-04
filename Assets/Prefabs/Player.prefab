@@ -288,12 +288,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a36214ac5471615418b989cf98557499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Max_Health: 5
-  Crash_Damage: 1
-  Bullet_Damage: 0.5
   healthDisplay: {fileID: 0}
   DeathDisplay: {fileID: 0}
   cantAfford: {fileID: 0}
+  Max_Health: 5
+  Crash_Damage: 1
+  Bullet_Damage: 0.5
   ForwardVelocity: 5
   BackwardVelocity: 3.5
   RotSpeed: 270

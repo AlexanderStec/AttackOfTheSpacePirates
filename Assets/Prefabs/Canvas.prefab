@@ -5260,7 +5260,6 @@ GameObject:
   - component: {fileID: 4470372576694538154}
   - component: {fileID: 4470372576694538152}
   - component: {fileID: 4470372575852702734}
-  - component: {fileID: 4470372576694538153}
   m_Layer: 5
   m_Name: Level Complete
   m_TagString: Untagged
@@ -5406,18 +5405,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4470372576694538153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4470372576694538155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d51769442c0294340a96d3ebf605b461, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4470372576773286502
 GameObject:
   m_ObjectHideFlags: 0
@@ -6341,7 +6328,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'you died and the world has perished
 
-    Press R to restart'
+    Press R to restart the game'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1c5554b4c4e279c449f95e11f95c0e11, type: 2}
   m_sharedMaterial: {fileID: 21892280927809496, guid: 1c5554b4c4e279c449f95e11f95c0e11,
