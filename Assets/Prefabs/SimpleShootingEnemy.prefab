@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4332493320160765812}
   - component: {fileID: 4332493320160765814}
   - component: {fileID: 5083715213995683497}
-  - component: {fileID: 8088852968856097040}
   - component: {fileID: 5328083168239054760}
   - component: {fileID: 60327621849604994}
+  - component: {fileID: 1205738055677281137}
   m_Layer: 9
   m_Name: SimpleShootingEnemy
   m_TagString: SimpleEnemy
@@ -148,21 +148,6 @@ MonoBehaviour:
   Bullet_lifetime: 10
   Bullet_Velocity: 3
   health: 0
---- !u!114 &8088852968856097040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4332493320160765768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 224eb2d636de8964b81413705357904a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 5781222923741117555, guid: 76c0878dd0225444797daa1b4b1e6072, type: 3}
-  minRange: -2
-  maxRange: 2
 --- !u!114 &5328083168239054760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,3 +261,18 @@ PolygonCollider2D:
       - {x: 0.19999999, y: -2.3799999}
       - {x: 0.21, y: -2.33}
       - {x: 0.37, y: -2.1499999}
+--- !u!114 &1205738055677281137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4332493320160765768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224eb2d636de8964b81413705357904a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5781222923741117555, guid: 76c0878dd0225444797daa1b4b1e6072, type: 3}
+  minRange: -2
+  maxRange: 2

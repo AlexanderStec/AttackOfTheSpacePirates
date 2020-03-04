@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class statKeeper : MonoBehaviour
 {
-    private StatManager stats;
-    private AbilityManager abilities;
+    public StatManager startingStats;
+    public StatManager currentStats;
+    public AbilityManager startingAbilities;
+    public AbilityManager CurrentAbilities;
     private GameObject player;
+    private AudioManager am;
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
         player = GameObject.FindGameObjectWithTag("Player");
+        am = FindObjectOfType<AudioManager>();
+        am.Play("MainTheme");
+        startingAbilities = player.GetComponent<AbilityManager>();
+        startingStats = player.GetComponent<StatManager>();
     }
 
     // Update is called once per frame
@@ -19,8 +26,9 @@ public class statKeeper : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("Player") != null)
         {
-            stats = player.GetComponent<StatManager>();
-            abilities = player.GetComponent<AbilityManager>();
+            player = GameObject.FindGameObjectWithTag("Player");
+            CurrentAbilities = player.GetComponent<AbilityManager>();
+            currentStats = player.GetComponent<StatManager>();
         }
     }
 }

@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StatManager : MonoBehaviour
 {
-
-    public float Max_Health = 0f;
-    public float Crash_Damage;
-    public float Bullet_Damage;
     public TextMeshProUGUI healthDisplay;
     public TextMeshProUGUI DeathDisplay;
     public TextMeshProUGUI cantAfford;
 
+    public float Max_Health;
+    public float Crash_Damage;
+    public float Bullet_Damage;
     public float ForwardVelocity;
     public float BackwardVelocity;
     public float RotSpeed;
@@ -29,6 +29,7 @@ public class StatManager : MonoBehaviour
 
     private void Start()
     {
+        health = Max_Health;
         if (tag.Equals("Player"))
         {
             PH = this.GetComponent<PlayerHit>();
@@ -37,7 +38,21 @@ public class StatManager : MonoBehaviour
         AM = FindObjectOfType<AudioManager>();
         if (Max_Health <= 0)
             Debug.LogWarning("Max Health started at 0 or neg");
-        health = Max_Health;
+        if (!SceneManager.GetActiveScene().name.Equals("Level 1")) //if not on first level and player is in scene this runs
+        {
+            statKeeper sk = GameObject.FindGameObjectWithTag("Stats").GetComponent<statKeeper>();
+            Max_Health = sk.currentStats.Max_Health;
+            Crash_Damage = sk.currentStats.Crash_Damage;
+            Bullet_Damage = sk.currentStats.Bullet_Damage;
+            ForwardVelocity = sk.currentStats.ForwardVelocity;
+            BackwardVelocity = sk.currentStats.BackwardVelocity;
+            RotSpeed = sk.currentStats.RotSpeed;
+            firing_rate = sk.currentStats.firing_rate;
+            forward_projectile_spawn_height = sk.currentStats.forward_projectile_spawn_height;
+            Bullet_lifetime = sk.currentStats.Bullet_lifetime;
+            Bullet_Velocity = sk.currentStats.Bullet_Velocity;
+            health = sk.currentStats.health;
+        }
     }
 
     //Increases health by given amount
@@ -58,9 +73,12 @@ public class StatManager : MonoBehaviour
         }
         if (tag.Equals("Broad") || tag.Equals("SimpleEnemy"))
         {
-            EnemyHit EH = this.GetComponent<EnemyHit>();
-            StartCoroutine(EH.ColorChange(EH.changeTime));
-            AM.Play("BroadHit");
+            if (this.gameObject != null)
+            {
+                EnemyHit EH = this.GetComponent<EnemyHit>();
+                StartCoroutine(EH.ColorChange(EH.changeTime));
+                AM.Play("BroadHit");
+            }
         }
         if (amount < 0)
             Debug.LogWarning("Cannot cause negative damage!");
@@ -90,7 +108,7 @@ public class StatManager : MonoBehaviour
     {
         if (this.gameObject.tag.Equals("Player"))
         {
-            healthDisplay.SetText(" " + health);
+            healthDisplay.SetText(" " + health + "/" + Max_Health);
         }
         if (is_dead())
         {

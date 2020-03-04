@@ -15,6 +15,8 @@ public class Spawn : MonoBehaviour
         [System.Serializable]
         public class Enemies
         {
+            public bool boss;
+            public string bosstext;
             public GameObject enemy;
             public int count;
         }
@@ -34,12 +36,15 @@ public class Spawn : MonoBehaviour
     public float forceSpawnNextWave;
     public TextMeshProUGUI complete;
     public Image shop;
+    public TextMeshProUGUI bosshealth;
+    public Image bosshealthbar;
 
     private float forceSpawnCountDown;
     private float waveCountDown;
     private SpawnState state = SpawnState.COUNTING;
     private float searchCountdown = 1f;
     private GameObject player;
+
 
     private void Start()
     {
@@ -106,9 +111,9 @@ public class Spawn : MonoBehaviour
         if (nextWave + 1 > waves.Length - 1)
         {
             nextWave = 0;
-            Debug.Log("All waves complete!");
             player.GetComponent<CurrencyManager>().addMoney(levelReward);
             complete.gameObject.SetActive(true);
+            bosshealth.gameObject.SetActive(false);
             StartCoroutine(OpenShop());
             //this is where you write code for when you defeat all waves (delete above line)
         }
@@ -125,7 +130,14 @@ public class Spawn : MonoBehaviour
         {
             for (int i = 0; i < E.count; i++)
             {
-                SpawnEnemy(E.enemy);
+                if (E.boss)
+                {
+                    bosshealth.gameObject.SetActive(true);
+                    bosshealth.text = E.bosstext;
+                    SpawnEnemy(E.enemy, true);
+                }
+                else
+                    SpawnEnemy(E.enemy, false);
                 yield return new WaitForSeconds(1f / wave.rate);
             }
         }
@@ -135,17 +147,33 @@ public class Spawn : MonoBehaviour
         yield break;
     }
 
+    IEnumerator Bosshptrack(GameObject enemy)
+    {
+        StatManager sm = enemy.GetComponent<StatManager>();
+        yield return new WaitForSeconds(1f);
+        while (sm.health >= 0f)
+        {
+            bosshealthbar.rectTransform.localScale = new Vector3((sm.health / sm.Max_Health), 1f, 1f);
+            yield return null;
+        }
+    }
+
+
     IEnumerator OpenShop()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         shop.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }
 
-    void SpawnEnemy(GameObject enemy)
+    void SpawnEnemy(GameObject enemy, bool boss)
     {
         int spawnpoint = Random.Range(0, numSpawnpoints);
         GameObject obj = GameObject.Instantiate(enemy, this.transform.GetChild(spawnpoint).position, Quaternion.identity);
+        if (boss)
+        {
+            StartCoroutine(Bosshptrack(obj));
+        }
     }
 
 }
