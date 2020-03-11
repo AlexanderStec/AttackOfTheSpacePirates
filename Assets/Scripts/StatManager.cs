@@ -20,6 +20,8 @@ public class StatManager : MonoBehaviour
     public float forward_projectile_spawn_height;
     public float Bullet_lifetime;
     public float Bullet_Velocity;
+    public int num_bullet;
+    public int moneydropped;
 
     [HideInInspector]
     public float health;
@@ -34,6 +36,10 @@ public class StatManager : MonoBehaviour
         {
             PH = this.GetComponent<PlayerHit>();
             CM = this.GetComponent<CurrencyManager>();
+        }
+        else
+        {
+            CM = GameObject.FindGameObjectWithTag("Player").GetComponent<CurrencyManager>();
         }
         AM = FindObjectOfType<AudioManager>();
         if (Max_Health <= 0)
@@ -73,7 +79,7 @@ public class StatManager : MonoBehaviour
         }
         if (tag.Equals("Broad") || tag.Equals("SimpleEnemy"))
         {
-            if (this.gameObject != null)
+            if (health > 0f)
             {
                 EnemyHit EH = this.GetComponent<EnemyHit>();
                 StartCoroutine(EH.ColorChange(EH.changeTime));
@@ -94,7 +100,10 @@ public class StatManager : MonoBehaviour
     public void kill()
     {
         if (tag.Equals("SimpleEnemy") || tag.Equals("Broad"))
+        {
             AM.Play("SimpleEnemyDeath");
+            CM.addMoney(moneydropped);
+        }
         if (tag.Equals("Player"))
         {
             AM.Play("PlayerDeath");
@@ -166,6 +175,34 @@ public class StatManager : MonoBehaviour
         {
             Max_Health++;
             heal(1);
+            CM.balance--;
+        }
+        else
+        {
+            Color newColor = cantAfford.color;
+            newColor.a = 1;
+            cantAfford.color = newColor;
+        }
+    }
+    public void inc_bullet_velocity()
+    {
+        if (CM.balance >= 1)
+        {
+            Bullet_Velocity++;
+            CM.balance--;
+        }
+        else
+        {
+            Color newColor = cantAfford.color;
+            newColor.a = 1;
+            cantAfford.color = newColor;
+        }
+    }
+    public void inc_num_bullets()
+    {
+        if (CM.balance >= 1)
+        {
+            Bullet_Velocity++;
             CM.balance--;
         }
         else

@@ -9,6 +9,13 @@ public class PlayerGun : MonoBehaviour
     private float SpawnHeight;
     StatManager SM;
     public GameObject Reload;
+    public GameObject spawn1;
+    public GameObject spawn2;
+    public GameObject spawn3;
+    public GameObject spawn4;
+    public GameObject spawn5;
+    public GameObject spawn6;
+    public GameObject spawn7;
 
 
     // Start is called before the first frame update
@@ -32,7 +39,45 @@ public class PlayerGun : MonoBehaviour
             lastfire = time;
             Vector3 position = transform.position + transform.up * SpawnHeight;
             Quaternion rotation = transform.rotation;
-            GameObject.Instantiate(prefab, position, rotation);
+            if (SM.num_bullet == 1)
+            {
+                GameObject.Instantiate(prefab, spawn1.transform.position , rotation);
+            }
+            if (SM.num_bullet == 2)
+            {
+                GameObject.Instantiate(prefab, spawn2.transform.position, rotation);
+                GameObject.Instantiate(prefab, spawn3.transform.position, rotation);
+            }
+            if (SM.num_bullet == 3)
+            {
+                GameObject.Instantiate(prefab, spawn2.transform.position, rotation);
+                GameObject.Instantiate(prefab, spawn3.transform.position, rotation);
+                GameObject.Instantiate(prefab, spawn1.transform.position, rotation);
+            }
+            if (SM.num_bullet == 4)
+            {
+                GameObject.Instantiate(prefab, spawn2.transform.position, rotation);
+                GameObject.Instantiate(prefab, spawn3.transform.position, rotation);
+                GameObject.Instantiate(prefab, spawn4.transform.position, rotation);
+                GameObject.Instantiate(prefab, spawn5.transform.position, rotation);
+            }
+            if (SM.num_bullet == 5)
+            {
+                GameObject.Instantiate(prefab, spawn1.transform.position, rotation);
+                GameObject.Instantiate(prefab, spawn2.transform.position, rotation);
+                GameObject.Instantiate(prefab, spawn3.transform.position, rotation);
+                GameObject.Instantiate(prefab, spawn4.transform.position, rotation);
+                GameObject.Instantiate(prefab, spawn5.transform.position, rotation);
+            }
+            if (SM.num_bullet == 6)
+            {
+                GameObject.Instantiate(prefab, spawn2.transform.position, rotation);
+                GameObject.Instantiate(prefab, spawn3.transform.position, rotation);
+                GameObject.Instantiate(prefab, spawn4.transform.position, rotation);
+                GameObject.Instantiate(prefab, spawn5.transform.position, rotation);
+                GameObject.Instantiate(prefab, spawn6.transform.position, rotation);
+                GameObject.Instantiate(prefab, spawn7.transform.position, rotation);
+            }
         }
     }
 

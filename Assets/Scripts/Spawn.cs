@@ -161,7 +161,7 @@ public class Spawn : MonoBehaviour
 
     IEnumerator OpenShop()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         shop.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }

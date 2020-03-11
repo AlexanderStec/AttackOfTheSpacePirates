@@ -205,11 +205,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a36214ac5471615418b989cf98557499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthDisplay: {fileID: 0}
+  DeathDisplay: {fileID: 0}
+  cantAfford: {fileID: 0}
   Max_Health: 1
   Crash_Damage: 1
   Bullet_Damage: 0
-  healthDisplay: {fileID: 0}
-  DeathDisplay: {fileID: 0}
   ForwardVelocity: 0
   BackwardVelocity: 0
   RotSpeed: 0
@@ -217,6 +218,8 @@ MonoBehaviour:
   forward_projectile_spawn_height: 0
   Bullet_lifetime: 0
   Bullet_Velocity: 0
+  num_bullet: 0
+  moneydropped: 1
   health: 0
 --- !u!114 &6082710074538165148
 MonoBehaviour:

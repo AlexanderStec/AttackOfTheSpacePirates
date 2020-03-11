@@ -9,6 +9,7 @@ public class CurrencyManager : MonoBehaviour
 {
     public int balance;
     public TextMeshProUGUI moneyDisplay;
+    public TextMeshProUGUI ShopmoneyDisplay;
 
     private void Start()
     {
@@ -54,6 +55,7 @@ public class CurrencyManager : MonoBehaviour
     {
         Data.CurrentCurrency = this.GetComponent<CurrencyManager>();
         moneyDisplay.SetText(" " + balance);
+        ShopmoneyDisplay.SetText(" " + balance);
     }
 
 }  

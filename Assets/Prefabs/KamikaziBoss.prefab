@@ -182,9 +182,9 @@ MonoBehaviour:
   healthDisplay: {fileID: 0}
   DeathDisplay: {fileID: 0}
   cantAfford: {fileID: 0}
-  Max_Health: 20
-  Crash_Damage: 1
-  Bullet_Damage: 1
+  Max_Health: 25
+  Crash_Damage: 5
+  Bullet_Damage: 2
   ForwardVelocity: 0
   BackwardVelocity: 0
   RotSpeed: 0
@@ -192,6 +192,8 @@ MonoBehaviour:
   forward_projectile_spawn_height: 0
   Bullet_lifetime: 10
   Bullet_Velocity: 3
+  num_bullet: 0
+  moneydropped: 0
   health: 0
 --- !u!114 &7926117975635215243
 MonoBehaviour:

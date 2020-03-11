@@ -60,8 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FollowPlayer.cs" />
-    <Compile Include="Assets\KamikaziBoss.cs" />
     <Compile Include="Assets\Scripts\AbilityManager.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\BroadsideEnemy.cs" />
@@ -71,7 +69,9 @@
     <Compile Include="Assets\Scripts\EnemyBullet.cs" />
     <Compile Include="Assets\Scripts\EnemyGun.cs" />
     <Compile Include="Assets\Scripts\EnemyHit.cs" />
+    <Compile Include="Assets\Scripts\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\imagefade.cs" />
+    <Compile Include="Assets\Scripts\KamikaziBoss.cs" />
     <Compile Include="Assets\Scripts\load_next_scene.cs" />
     <Compile Include="Assets\Scripts\PlanetHit.cs" />
     <Compile Include="Assets\Scripts\PlayerBullet.cs" />
