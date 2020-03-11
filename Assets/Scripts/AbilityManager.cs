@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class AbilityManager : MonoBehaviour
 {
+
     public float ShieldCooldown;
     public float ShieldUpTime;
 
@@ -25,12 +26,21 @@ public class AbilityManager : MonoBehaviour
     public Image RightDashImage;
 
     public TextMeshProUGUI cantAfford;
+    public TextMeshProUGUI maxUpgrade;
 
     private bool ShieldOnCD;
     private bool LeftDash;
     private bool RightDash;
     private CurrencyManager CM;
-    
+
+    [HideInInspector]
+    public float shieldcdupgrade = 0;
+    [HideInInspector]
+    public float shielddurationupgrade = 0;
+    [HideInInspector]
+    public float dashdistanceupgrade = 0;
+    [HideInInspector]
+    public float dashcdupgrade = 0;
 
     private void Start()
     {
@@ -47,6 +57,11 @@ public class AbilityManager : MonoBehaviour
             DashDuration = sk.DashDuration;
             DashCD = sk.DashCD;
             DashDistance = sk.DashDistance;
+
+            shieldcdupgrade = sk.shieldcdupgrade;
+            shielddurationupgrade = sk.shielddurationupgrade;
+            dashdistanceupgrade = sk.dashdistanceupgrade;
+            dashcdupgrade = sk.dashcdupgrade;
         }
     }
     private void FixedUpdate()
@@ -145,59 +160,139 @@ public class AbilityManager : MonoBehaviour
 
     public void inc_cd_shield()
     {
-        if (CM.balance >= 1)
+        if (shieldcdupgrade < 5)
         {
-            ShieldCooldown -= 1f;
-            CM.balance--;
+            float cost = Mathf.Pow(2, shieldcdupgrade) * 10;
+            if (CM.balance >= cost)
+            {
+                if (shieldcdupgrade < 4)
+                {
+                    ShieldCooldown -= .25f;
+                    CM.removeMoney((int)cost);
+                    shieldcdupgrade++;
+                }
+                else
+                {
+                    ShieldCooldown -= .5f;
+                    CM.removeMoney((int)cost);
+                    shieldcdupgrade++;
+                }
+            }
+            else
+            {
+                Color newColor = cantAfford.color;
+                newColor.a = 1;
+                cantAfford.color = newColor;
+            }
         }
         else
         {
-            Color newColor = cantAfford.color;
+            Color newColor = maxUpgrade.color;
             newColor.a = 1;
-            cantAfford.color = newColor;
+            maxUpgrade.color = newColor;
         }
     }
     public void inc_duration_shield()
     {
-        if (CM.balance >= 1)
+        if (shielddurationupgrade < 5)
         {
-            ShieldUpTime++;
-            CM.balance--;
+            float cost = Mathf.Pow(2, shielddurationupgrade) * 10;
+            if (CM.balance >= cost)
+            {
+                if (shielddurationupgrade < 4)
+                {
+                    ShieldUpTime += .25f;
+                    CM.removeMoney((int)cost);
+                    shielddurationupgrade++;
+                }
+                else
+                {
+                    ShieldUpTime += .5f;
+                    CM.removeMoney((int)cost);
+                    shielddurationupgrade++;
+                }
+            }
+            else
+            {
+                Color newColor = cantAfford.color;
+                newColor.a = 1;
+                cantAfford.color = newColor;
+            }
         }
         else
         {
-            Color newColor = cantAfford.color;
+            Color newColor = maxUpgrade.color;
             newColor.a = 1;
-            cantAfford.color = newColor;
+            maxUpgrade.color = newColor;
         }
     }
 
     public void inc_cd_dash()
     {
-        if (CM.balance >= 1)
+        if (dashcdupgrade < 5)
         {
-            DashCD -= .5f;
-            CM.balance--;
+            float cost = Mathf.Pow(2, dashcdupgrade) * 10;
+            if (CM.balance >= cost)
+            {
+                if (dashcdupgrade < 4)
+                {
+                    DashCD -= .25f;
+                    CM.removeMoney((int)cost);
+                    dashcdupgrade++;
+                }
+                else
+                {
+                    DashCD -= .5f;
+                    CM.removeMoney((int)cost);
+                    dashcdupgrade++;
+                }
+            }
+            else
+            {
+                Color newColor = cantAfford.color;
+                newColor.a = 1;
+                cantAfford.color = newColor;
+            }
         }
         else
         {
-            Color newColor = cantAfford.color;
+            Color newColor = maxUpgrade.color;
             newColor.a = 1;
-            cantAfford.color = newColor;
+            maxUpgrade.color = newColor;
         }
     }
     public void inc_distance_dash()
     {
-        if (CM.balance >= 1)
+        if (dashdistanceupgrade < 5)
         {
-            DashDistance+=.5f;
-            CM.balance--;
+            float cost = Mathf.Pow(2, dashdistanceupgrade) * 10;
+            if (CM.balance >= cost)
+            {
+                if (dashdistanceupgrade < 4)
+                {
+                    DashDistance += .25f;
+                    CM.removeMoney((int)cost);
+                    dashdistanceupgrade++;
+                }
+                else
+                {
+                    DashDistance += .5f;
+                    CM.removeMoney((int)cost);
+                    dashdistanceupgrade++;
+                }
+            }
+            else
+            {
+                Color newColor = cantAfford.color;
+                newColor.a = 1;
+                cantAfford.color = newColor;
+            }
         }
         else
         {
-            Color newColor = cantAfford.color;
+            Color newColor = maxUpgrade.color;
             newColor.a = 1;
-            cantAfford.color = newColor;
+            maxUpgrade.color = newColor;
         }
     }
 }

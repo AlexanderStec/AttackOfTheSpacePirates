@@ -9,6 +9,7 @@ public class StatManager : MonoBehaviour
     public TextMeshProUGUI healthDisplay;
     public TextMeshProUGUI DeathDisplay;
     public TextMeshProUGUI cantAfford;
+    public TextMeshProUGUI maxUpgrade;
 
     public float Max_Health;
     public float Crash_Damage;
@@ -25,6 +26,20 @@ public class StatManager : MonoBehaviour
 
     [HideInInspector]
     public float health;
+
+    [HideInInspector]
+    public float healthupgrade = 0;
+    [HideInInspector]
+    public float movementupgrade = 0;
+    [HideInInspector]
+    public float bulletvelocityupgrade = 0;
+    [HideInInspector]
+    public float numbulletupgrade = 0;
+    [HideInInspector]
+    public float bulletdamageupgrade = 0;
+    [HideInInspector]
+    public float firingcdupgrade = 0;
+
     private AudioManager AM;
     private PlayerHit PH;
     private CurrencyManager CM;
@@ -57,7 +72,16 @@ public class StatManager : MonoBehaviour
             forward_projectile_spawn_height = sk.forward_projectile_spawn_height;
             Bullet_lifetime = sk.Bullet_lifetime;
             Bullet_Velocity = sk.Bullet_Velocity;
-            health = sk.health;
+            num_bullet = sk.num_bullet;
+
+            health = Max_Health;
+
+            healthupgrade = sk.healthupgrade;
+            movementupgrade = sk.movementupgrade;
+            bulletvelocityupgrade = sk.bulletvelocityupgrade;
+            numbulletupgrade = sk.numbulletupgrade;
+            bulletdamageupgrade = sk.bulletdamageupgrade;
+            firingcdupgrade = sk.firingcdupgrade;
         }
     }
 
@@ -128,88 +152,201 @@ public class StatManager : MonoBehaviour
 
     public void inc_speed()
     {
-        if (CM.balance >= 1)
+        if (movementupgrade < 5)
         {
-            ForwardVelocity++;
-            BackwardVelocity++;
-            CM.balance--;
+            float cost = Mathf.Pow(2, movementupgrade) * 10;
+            if (CM.balance >= cost)
+            {
+                if (movementupgrade < 4)
+                {
+                    ForwardVelocity += .5f;
+                    BackwardVelocity += .25f;
+                }
+                else
+                {
+                    ForwardVelocity += 1f;
+                    BackwardVelocity += .5f;
+                }
+                CM.removeMoney((int)cost);
+                movementupgrade++;
+            }
+            else
+            {
+                Color newColor = cantAfford.color;
+                newColor.a = 1;
+                cantAfford.color = newColor;
+            }
         }
         else
         {
-            Color newColor = cantAfford.color;
+            Color newColor = maxUpgrade.color;
             newColor.a = 1;
-            cantAfford.color = newColor;
+            maxUpgrade.color = newColor;
         }
     }
     public void inc_damage()
     {
-        if (CM.balance >= 1)
+        if (bulletdamageupgrade < 5)
         {
-            Bullet_Damage += 1;
-            CM.balance--;
+            float cost = Mathf.Pow(2, bulletdamageupgrade) * 10;
+            if (CM.balance >= cost)
+            {
+                if (bulletdamageupgrade < 3)
+                {
+                    Bullet_Damage += .5f;
+                }
+                else
+                {
+                    Bullet_Damage += 1f;
+                }
+                CM.removeMoney((int)cost);
+                bulletdamageupgrade++;
+            }
+            else
+            {
+                Color newColor = cantAfford.color;
+                newColor.a = 1;
+                cantAfford.color = newColor;
+            }
         }
         else
         {
-            Color newColor = cantAfford.color;
+            Color newColor = maxUpgrade.color;
             newColor.a = 1;
-            cantAfford.color = newColor;
+            maxUpgrade.color = newColor;
         }
     }
     public void inc_firing_cd()
     {
-        if (CM.balance >= 1)
+        if (firingcdupgrade < 5)
         {
-            firing_rate -= .1f;
-            CM.balance--;
+            float cost = Mathf.Pow(2, firingcdupgrade) * 10;
+            if (CM.balance >= cost)
+            {
+                firing_rate-=.05f;
+                CM.removeMoney((int)cost);
+                firingcdupgrade++;
+            }
+            else
+            {
+                Color newColor = cantAfford.color;
+                newColor.a = 1;
+                cantAfford.color = newColor;
+            }
         }
         else
         {
-            Color newColor = cantAfford.color;
+            Color newColor = maxUpgrade.color;
             newColor.a = 1;
-            cantAfford.color = newColor;
+            maxUpgrade.color = newColor;
         }
     }
     public void inc_health()
     {
-        if (CM.balance >= 1)
+        if (healthupgrade < 5)
         {
-            Max_Health++;
-            heal(1);
-            CM.balance--;
+            float cost = Mathf.Pow(2, healthupgrade) * 10;
+            if (CM.balance >= cost)
+            {
+                if (healthupgrade == 0)
+                {
+                    Max_Health++;
+                    heal(1);
+                }
+                if (healthupgrade == 1)
+                {
+                    Max_Health++;
+                    heal(1);
+                }
+                if (healthupgrade == 2)
+                {
+                    Max_Health+= 2f;
+                    heal(2);
+                }
+                if (healthupgrade == 3)
+                {
+                    Max_Health += 2f;
+                    heal(2);
+                }
+                if (healthupgrade == 4)
+                {
+                    Max_Health += 3f;
+                    heal(3);
+                }
+
+                CM.removeMoney((int)cost);
+                healthupgrade++;
+            }
+            else
+            {
+                Color newColor = cantAfford.color;
+                newColor.a = 1;
+                cantAfford.color = newColor;
+            }
         }
         else
         {
-            Color newColor = cantAfford.color;
+            Color newColor = maxUpgrade.color;
             newColor.a = 1;
-            cantAfford.color = newColor;
+            maxUpgrade.color = newColor;
         }
     }
     public void inc_bullet_velocity()
     {
-        if (CM.balance >= 1)
+        if (bulletvelocityupgrade < 5)
         {
-            Bullet_Velocity++;
-            CM.balance--;
+            float cost = Mathf.Pow(2, bulletvelocityupgrade) * 10;
+            if (CM.balance >= cost)
+            {
+                if (bulletvelocityupgrade < 4)
+                {
+                    Bullet_Velocity += .5f;
+                }
+                else
+                {
+                    Bullet_Velocity += 1f;
+                }
+                CM.removeMoney((int)cost);
+                bulletvelocityupgrade++;
+            }
+            else
+            {
+                Color newColor = cantAfford.color;
+                newColor.a = 1;
+                cantAfford.color = newColor;
+            }
         }
         else
         {
-            Color newColor = cantAfford.color;
+            Color newColor = maxUpgrade.color;
             newColor.a = 1;
-            cantAfford.color = newColor;
+            maxUpgrade.color = newColor;
         }
     }
     public void inc_num_bullets()
     {
-        if (CM.balance >= 1)
+        if (numbulletupgrade < 5)
         {
-            Bullet_Velocity++;
-            CM.balance--;
+            float cost = Mathf.Pow(2, numbulletupgrade) * 10;
+            if (CM.balance >= cost)
+            {
+                num_bullet++;
+                firing_rate += .1f;
+                CM.removeMoney((int)cost);
+                numbulletupgrade++;
+            }
+            else
+            {
+                Color newColor = cantAfford.color;
+                newColor.a = 1;
+                cantAfford.color = newColor;
+            }
         }
         else
         {
-            Color newColor = cantAfford.color;
+            Color newColor = maxUpgrade.color;
             newColor.a = 1;
-            cantAfford.color = newColor;
+            maxUpgrade.color = newColor;
         }
     }
 
