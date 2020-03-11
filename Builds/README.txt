@@ -1,0 +1,2 @@
+The inputs are WASD for rotating the ship and moving forwards/backwards, space for firing the laser, and q, e, and r for abilities. 
+Use the mouse to click on the icons in shop in order to purchase upgrades and navigate the menu screens. 
