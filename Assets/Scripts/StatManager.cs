@@ -10,6 +10,18 @@ public class StatManager : MonoBehaviour
     public TextMeshProUGUI DeathDisplay;
     public TextMeshProUGUI cantAfford;
     public TextMeshProUGUI maxUpgrade;
+    public TextMeshProUGUI healthupgradecost;
+    public TextMeshProUGUI healthupgradetext;
+    public TextMeshProUGUI movementupgradecost;
+    public TextMeshProUGUI movementupgradetext;
+    public TextMeshProUGUI numbulletupgradecost;
+    public TextMeshProUGUI numbulletupgradetext;
+    public TextMeshProUGUI bulletvelocityupgradecost;
+    public TextMeshProUGUI bulletvelocityupgradetext;
+    public TextMeshProUGUI bulletdamageupgradecost;
+    public TextMeshProUGUI bulletdamageupgradetext;
+    public TextMeshProUGUI FiringCooldownupgradecost;
+    public TextMeshProUGUI FiringCooldownupgradetext;
 
     public float Max_Health;
     public float Crash_Damage;
@@ -142,6 +154,80 @@ public class StatManager : MonoBehaviour
         if (this.gameObject.tag.Equals("Player"))
         {
             healthDisplay.SetText(" " + health + "/" + Max_Health);
+            if (healthupgrade < 5)
+            {
+                if (healthupgrade == 1 || healthupgrade == 0)
+                    healthupgradetext.SetText("MAX HEALTH +" + 1);
+                if (healthupgrade == 2 || healthupgrade == 3)
+                    healthupgradetext.SetText("MAX HEALTH +" + 2);
+                if (healthupgrade == 4)
+                    healthupgradetext.SetText("MAX HEALTH +" + 3);
+                healthupgradecost.SetText("Cost: " + +Mathf.Pow(2, healthupgrade) * 10 + " ZBK");
+            }
+            if (healthupgrade == 5)
+            {
+                healthupgradetext.SetText("MAXED");
+                healthupgradecost.SetText("OUT");
+            }
+            if (movementupgrade < 5)
+            {
+                if (movementupgrade <=3)
+                    movementupgradetext.SetText("Movement Speed \nForwards Velocity +" + .5 + "m/s" + "\nBackwards Velocity +" + .25 + "m/s");
+                if (movementupgrade == 4)
+                    movementupgradetext.SetText("Movement Speed \nForwards Velocity +" + 1 + "m/s" + "\nBackwards Velocity +" + .5 + "m/s");
+                movementupgradecost.SetText("Cost: " + +Mathf.Pow(2, movementupgrade) * 10 + " ZBK");
+            }
+            if (movementupgrade == 5)
+            {
+                movementupgradetext.SetText("\n\nMAXED");
+                movementupgradecost.SetText("OUT");
+            }
+            if (numbulletupgrade < 5)
+            {
+                numbulletupgradetext.SetText("Num Bullets +" + 1 +"\nFiring Rate +0.1s");
+                numbulletupgradecost.SetText("Cost: " + +Mathf.Pow(2, numbulletupgrade) * 10 + " ZBK");
+            }
+            if (numbulletupgrade == 5)
+            {
+                numbulletupgradetext.SetText("\nMAXED");
+                numbulletupgradecost.SetText("OUT");
+            }
+            if (bulletvelocityupgrade < 5)
+            {
+                if (bulletvelocityupgrade <= 3)
+                    bulletvelocityupgradetext.SetText("Bullet Velocity +" + .5 + "m/s");
+                if (bulletvelocityupgrade == 4)
+                    bulletvelocityupgradetext.SetText("Bullet Velocity +" + 1 + "m/s");
+                bulletvelocityupgradecost.SetText("Cost: " + +Mathf.Pow(2, bulletvelocityupgrade) * 10 + " ZBK");
+            }
+            if (bulletvelocityupgrade == 5)
+            {
+                bulletvelocityupgradetext.SetText("MAXED");
+                bulletvelocityupgradecost.SetText("OUT");
+            }
+            if (firingcdupgrade < 5)
+            {
+                FiringCooldownupgradetext.SetText("Firing Cooldown -" + .05 + "s");
+                FiringCooldownupgradecost.SetText("Cost: " + +Mathf.Pow(2, firingcdupgrade) * 10 + " ZBK");
+            }
+            if (firingcdupgrade == 5)
+            {
+                FiringCooldownupgradetext.SetText("MAXED");
+                FiringCooldownupgradecost.SetText("OUT");
+            }
+            if (bulletdamageupgrade < 5)
+            {
+                if (bulletdamageupgrade == 2 || bulletdamageupgrade == 1 || bulletdamageupgrade == 0)
+                    bulletdamageupgradetext.SetText("Bullet Damage +" + .5);
+                if (bulletdamageupgrade == 4 || bulletdamageupgrade == 3)
+                    bulletdamageupgradetext.SetText("Bullet Damage +" + 1);
+                bulletdamageupgradecost.SetText("Cost: " + +Mathf.Pow(2, bulletdamageupgrade) * 10 + " ZBK");
+            }
+            if (bulletdamageupgrade == 5)
+            {
+                bulletdamageupgradetext.SetText("MAXED");
+                bulletdamageupgradecost.SetText("OUT");
+            }
         }
         if (is_dead())
         {

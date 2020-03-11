@@ -21,6 +21,7 @@ public class shield : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (GameObject.FindGameObjectWithTag("Player") != null)
         transform.position = player.transform.position;
         if(Time.time > (Ctime + AM.ShieldUpTime))
         {

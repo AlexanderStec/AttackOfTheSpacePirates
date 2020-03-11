@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 548}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 498}
   m_MaxSize: {x: 18008, y: 14048}
   vertical: 0
-  controlID: 10969
+  controlID: 51436
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 498}
   m_MaxSize: {x: 14006, y: 14048}
   vertical: 1
-  controlID: 10915
+  controlID: 51415
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 10916
+  controlID: 51416
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 274}
   m_MaxSize: {x: 14006, y: 10024}
   vertical: 0
-  controlID: 10873
+  controlID: 51450
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -350,7 +350,7 @@ MonoBehaviour:
     width: 636
     height: 579
   m_PersistentViewDataDictionary: {fileID: 0}
-  m_MaximizeOnPlay: 0
+  m_MaximizeOnPlay: 1
   m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 05000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -436,9 +436,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 292.3112, y: 263.3704, z: 6.875}
+    m_Target: {x: -3.1412218, y: -3.7177782, z: -0.1934898}
     speed: 2
-    m_Value: {x: 292.3112, y: 263.3704, z: 6.875}
+    m_Value: {x: -3.1412218, y: -3.7177782, z: -0.1934898}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -470,9 +470,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 364.4239
+    m_Target: 23.358044
     speed: 2
-    m_Value: 364.4239
+    m_Value: 23.358044
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -628,10 +628,10 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 217}
+      scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: b4dbffff20dcfffff8dcffffdaddffffbafbffff962f0000ba30000094570000b8580000a45c0000545d00003c64000060650000
+      m_ExpandedIDs: 603cffffcc3cffff383dffffee3dffff5a3effffc63effff923fffffba3fffff3a40ffff1c42ffffce42ffff3a43ffffa243ffff124fffff944fffff0a50ffff7650ffffe250ffff4e51ffffba51ffff9252ffffae64ffff6e65ffffd665ffff3e66ffffa868ffff9269ffff366affffe86affffbafbffff962f000010300000ba300000e0040100e4090100241c0100d6500100fa51010064530100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -693,19 +693,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 60
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Prefabs
   m_LastFoldersGridSize: 60
   m_LastProjectPath: D:\Unity\AttackOfTheSpacePirates
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 60}
-    m_SelectedIDs: 76290000
-    m_LastClickedID: 10614
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 482a0000
+    m_LastClickedID: 10824
     m_ExpandedIDs: 00000000582800001a2900009c290000062c0000c02c0000f82d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -761,7 +761,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000c02a0000842f00002a380000aee6ffff5e2f000048b6ffffb02b00005e2d0000be2900009828000066610000e82f0000e22a0000c22d0000ca2c000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

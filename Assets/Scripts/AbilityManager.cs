@@ -28,6 +28,15 @@ public class AbilityManager : MonoBehaviour
     public TextMeshProUGUI cantAfford;
     public TextMeshProUGUI maxUpgrade;
 
+    public TextMeshProUGUI dashcooldownupgradecost;
+    public TextMeshProUGUI dashcooldownupgradetext;
+    public TextMeshProUGUI dashdistanceupgradecost;
+    public TextMeshProUGUI dashdistanceupgradetext;
+    public TextMeshProUGUI shieldcooldownupgradecost;
+    public TextMeshProUGUI shieldcooldownupgradetext;
+    public TextMeshProUGUI shielduptimeupgradecost;
+    public TextMeshProUGUI shielduptimeupgradetext;
+
     private bool ShieldOnCD;
     private bool LeftDash;
     private bool RightDash;
@@ -70,6 +79,61 @@ public class AbilityManager : MonoBehaviour
         ShieldUpdate();
         LeftUpdate();
         RightUpdate();
+        if (this.gameObject.tag.Equals("Player"))
+        {
+            if (dashdistanceupgrade < 5)
+            {
+                if (dashdistanceupgrade<= 3)
+                    dashdistanceupgradetext.SetText("Dash Distance +" + .25 + "m");
+                if (dashdistanceupgrade == 4)
+                    dashdistanceupgradetext.SetText("Dash Distance +" + .5 + "m");
+                dashdistanceupgradecost.SetText("Cost: " + +Mathf.Pow(2, dashdistanceupgrade) * 10 + " ZBK");
+            }
+            if (dashdistanceupgrade == 5)
+            {
+                dashdistanceupgradetext.SetText("MAXED");
+                dashdistanceupgradecost.SetText("OUT");
+            }
+            if (dashcdupgrade < 5)
+            {
+                if (dashcdupgrade <= 3)
+                    dashcooldownupgradetext.SetText("Dash Cooldown -" + .25 + "s");
+                if (dashcdupgrade == 4)
+                    dashcooldownupgradetext.SetText("Dash Cooldown -" + .5 + "s");
+                dashcooldownupgradecost.SetText("Cost: " + +Mathf.Pow(2, dashcdupgrade) * 10 + " ZBK");
+            }
+            if (dashcdupgrade == 5)
+            {
+                dashcooldownupgradetext.SetText("MAXED");
+                dashcooldownupgradecost.SetText("OUT");
+            }
+            if (shielddurationupgrade < 5)
+            {
+                if (shielddurationupgrade <= 3)
+                    shielduptimeupgradetext.SetText("Shield Uptime +" + .25 + "s");
+                if (shielddurationupgrade == 4)
+                    shielduptimeupgradetext.SetText("Shield Uptime +" + .5 + "s");
+                shielduptimeupgradecost.SetText("Cost: " + +Mathf.Pow(2, shielddurationupgrade) * 10 + " ZBK");
+            }
+            if (shielddurationupgrade == 5)
+            {
+                shielduptimeupgradetext.SetText("MAXED");
+                shielduptimeupgradecost.SetText("OUT");
+            }
+            if (shieldcdupgrade < 5)
+            {
+                if (shieldcdupgrade <= 3)
+                    shieldcooldownupgradetext.SetText("Shield Cooldown -" + .25 + "s");
+                if (shieldcdupgrade == 4)
+                    shieldcooldownupgradetext.SetText("Shield Cooldown -" + .5 + "s");
+                shieldcooldownupgradecost.SetText("Cost: " + +Mathf.Pow(2, shieldcdupgrade) * 10 + " ZBK");
+            }
+            if (shieldcdupgrade == 5)
+            {
+                shieldcooldownupgradetext.SetText("MAXED");
+                shieldcooldownupgradecost.SetText("OUT");
+            }
+        }
     }
 
     private void LeftUpdate()

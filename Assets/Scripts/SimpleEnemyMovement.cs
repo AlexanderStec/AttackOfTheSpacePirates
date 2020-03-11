@@ -8,6 +8,9 @@ public class SimpleEnemyMovement : MonoBehaviour
     public float MaxVerticalSpeed;
     public float MinHorizontalSpeed;
     public float MinVerticalSpeed;
+    public float minrot;
+    public float maxrot;
+    public bool rotate;
 
     private float Horizontalspeed;
     private float VerticalSpeed;
@@ -15,12 +18,14 @@ public class SimpleEnemyMovement : MonoBehaviour
     private GameObject player;
     private StatManager PlayerSM;
     private StatManager EnemySM;
+    private float rot;
     // Start is called before the first frame update
     void Start()
     {
         Direction = (Random.value > .5f);
         Horizontalspeed = Random.Range(MinHorizontalSpeed, MaxHorizontalSpeed);
         VerticalSpeed = Random.Range(MinVerticalSpeed, MaxVerticalSpeed);
+        rot = Random.Range(minrot, maxrot);
         player = GameObject.FindGameObjectWithTag("Player");
         PlayerSM = player.GetComponent<StatManager>();
         EnemySM = GetComponent<StatManager>();
@@ -43,6 +48,10 @@ public class SimpleEnemyMovement : MonoBehaviour
         Vector3 start = transform.position;
         transform.position = Vector3.Lerp(start, end, Time.fixedDeltaTime);
 
+        if (rotate)
+        {
+            transform.eulerAngles += new Vector3(0f,0f,rot);
+        }
 
     }
 
