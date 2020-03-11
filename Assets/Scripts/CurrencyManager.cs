@@ -54,8 +54,8 @@ public class CurrencyManager : MonoBehaviour
     private void FixedUpdate()
     {
         Data.CurrentCurrency = this.GetComponent<CurrencyManager>();
-        moneyDisplay.SetText(" " + balance);
-        ShopmoneyDisplay.SetText(" " + balance);
+        moneyDisplay.SetText(" " + balance + " ZBK");
+        ShopmoneyDisplay.SetText(" " + balance + " ZBK");
     }
 
 }  

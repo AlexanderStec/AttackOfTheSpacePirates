@@ -152,7 +152,7 @@ MonoBehaviour:
   bulletdamageupgradetext: {fileID: 0}
   FiringCooldownupgradecost: {fileID: 0}
   FiringCooldownupgradetext: {fileID: 0}
-  Max_Health: 4
+  Max_Health: 12
   Crash_Damage: 1.5
   Bullet_Damage: 0
   ForwardVelocity: 0

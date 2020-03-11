@@ -122,6 +122,9 @@ MonoBehaviour:
   MaxVerticalSpeed: 1.5
   MinHorizontalSpeed: 0.75
   MinVerticalSpeed: 0.75
+  minrot: 0
+  maxrot: 0
+  rotate: 0
 --- !u!114 &5083715213995683497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,9 +140,22 @@ MonoBehaviour:
   healthDisplay: {fileID: 0}
   DeathDisplay: {fileID: 0}
   cantAfford: {fileID: 0}
+  maxUpgrade: {fileID: 0}
+  healthupgradecost: {fileID: 0}
+  healthupgradetext: {fileID: 0}
+  movementupgradecost: {fileID: 0}
+  movementupgradetext: {fileID: 0}
+  numbulletupgradecost: {fileID: 0}
+  numbulletupgradetext: {fileID: 0}
+  bulletvelocityupgradecost: {fileID: 0}
+  bulletvelocityupgradetext: {fileID: 0}
+  bulletdamageupgradecost: {fileID: 0}
+  bulletdamageupgradetext: {fileID: 0}
+  FiringCooldownupgradecost: {fileID: 0}
+  FiringCooldownupgradetext: {fileID: 0}
   Max_Health: 2
   Crash_Damage: 1
-  Bullet_Damage: 0.5
+  Bullet_Damage: 1
   ForwardVelocity: 0
   BackwardVelocity: 0
   RotSpeed: 0
@@ -150,6 +166,12 @@ MonoBehaviour:
   num_bullet: 0
   moneydropped: 2
   health: 0
+  healthupgrade: 0
+  movementupgrade: 0
+  bulletvelocityupgrade: 0
+  numbulletupgrade: 0
+  bulletdamageupgrade: 0
+  firingcdupgrade: 0
 --- !u!114 &5328083168239054760
 MonoBehaviour:
   m_ObjectHideFlags: 0

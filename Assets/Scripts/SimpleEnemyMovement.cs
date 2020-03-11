@@ -26,8 +26,11 @@ public class SimpleEnemyMovement : MonoBehaviour
         Horizontalspeed = Random.Range(MinHorizontalSpeed, MaxHorizontalSpeed);
         VerticalSpeed = Random.Range(MinVerticalSpeed, MaxVerticalSpeed);
         rot = Random.Range(minrot, maxrot);
-        player = GameObject.FindGameObjectWithTag("Player");
-        PlayerSM = player.GetComponent<StatManager>();
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            PlayerSM = player.GetComponent<StatManager>();
+        }
         EnemySM = GetComponent<StatManager>();
     }
 

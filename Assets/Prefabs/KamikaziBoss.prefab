@@ -182,7 +182,20 @@ MonoBehaviour:
   healthDisplay: {fileID: 0}
   DeathDisplay: {fileID: 0}
   cantAfford: {fileID: 0}
-  Max_Health: 25
+  maxUpgrade: {fileID: 0}
+  healthupgradecost: {fileID: 0}
+  healthupgradetext: {fileID: 0}
+  movementupgradecost: {fileID: 0}
+  movementupgradetext: {fileID: 0}
+  numbulletupgradecost: {fileID: 0}
+  numbulletupgradetext: {fileID: 0}
+  bulletvelocityupgradecost: {fileID: 0}
+  bulletvelocityupgradetext: {fileID: 0}
+  bulletdamageupgradecost: {fileID: 0}
+  bulletdamageupgradetext: {fileID: 0}
+  FiringCooldownupgradecost: {fileID: 0}
+  FiringCooldownupgradetext: {fileID: 0}
+  Max_Health: 80
   Crash_Damage: 5
   Bullet_Damage: 2
   ForwardVelocity: 0
@@ -195,6 +208,12 @@ MonoBehaviour:
   num_bullet: 0
   moneydropped: 0
   health: 0
+  healthupgrade: 0
+  movementupgrade: 0
+  bulletvelocityupgrade: 0
+  numbulletupgrade: 0
+  bulletdamageupgrade: 0
+  firingcdupgrade: 0
 --- !u!114 &7926117975635215243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,7 +599,7 @@ MonoBehaviour:
   MaxVerticalSpeed: 1
   MinVerticalSpeed: 0.75
   minVerticalDistance: 1
-  droneRate: 3
+  droneRate: 2
   numdrones: 2
   spawn1: {fileID: 2844167178425578593}
   spawn2: {fileID: 2844167177178715169}

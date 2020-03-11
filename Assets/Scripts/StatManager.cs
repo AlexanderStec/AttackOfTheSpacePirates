@@ -66,7 +66,8 @@ public class StatManager : MonoBehaviour
         }
         else
         {
-            CM = GameObject.FindGameObjectWithTag("Player").GetComponent<CurrencyManager>();
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+                CM = GameObject.FindGameObjectWithTag("Player").GetComponent<CurrencyManager>();
         }
         AM = FindObjectOfType<AudioManager>();
         if (Max_Health <= 0)

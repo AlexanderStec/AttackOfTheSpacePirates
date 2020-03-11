@@ -120,7 +120,20 @@ MonoBehaviour:
   healthDisplay: {fileID: 0}
   DeathDisplay: {fileID: 0}
   cantAfford: {fileID: 0}
-  Max_Health: 10
+  maxUpgrade: {fileID: 0}
+  healthupgradecost: {fileID: 0}
+  healthupgradetext: {fileID: 0}
+  movementupgradecost: {fileID: 0}
+  movementupgradetext: {fileID: 0}
+  numbulletupgradecost: {fileID: 0}
+  numbulletupgradetext: {fileID: 0}
+  bulletvelocityupgradecost: {fileID: 0}
+  bulletvelocityupgradetext: {fileID: 0}
+  bulletdamageupgradecost: {fileID: 0}
+  bulletdamageupgradetext: {fileID: 0}
+  FiringCooldownupgradecost: {fileID: 0}
+  FiringCooldownupgradetext: {fileID: 0}
+  Max_Health: 20
   Crash_Damage: 3
   Bullet_Damage: 2
   ForwardVelocity: 0
@@ -133,6 +146,12 @@ MonoBehaviour:
   num_bullet: 0
   moneydropped: 5
   health: 0
+  healthupgrade: 0
+  movementupgrade: 0
+  bulletvelocityupgrade: 0
+  numbulletupgrade: 0
+  bulletdamageupgrade: 0
+  firingcdupgrade: 0
 --- !u!114 &5207109584872661386
 MonoBehaviour:
   m_ObjectHideFlags: 0

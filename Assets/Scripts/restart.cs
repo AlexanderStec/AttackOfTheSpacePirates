@@ -13,5 +13,9 @@ public class restart : MonoBehaviour
         {
             SceneManager.LoadScene("Level 1");
         }
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

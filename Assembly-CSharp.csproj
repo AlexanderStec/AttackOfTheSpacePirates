@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\PlayerBullet.cs" />
     <Compile Include="Assets\Scripts\PlayerGun.cs" />
     <Compile Include="Assets\Scripts\PlayerHit.cs" />
+    <Compile Include="Assets\Scripts\quit.cs" />
     <Compile Include="Assets\Scripts\restart.cs" />
     <Compile Include="Assets\Scripts\shield.cs" />
     <Compile Include="Assets\Scripts\SimpleEnemyMovement.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Assets\Scripts\StatManager.cs" />
     <Compile Include="Assets\Scripts\SwapCollider.cs" />
     <Compile Include="Assets\Scripts\TextFade.cs" />
+    <Compile Include="Assets\startgame.cs" />
     <None Include="Assets\Sounds\FUTURE_BEEPS_LITE\Read_Me.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
